@@ -215,7 +215,7 @@ body {
 
 .char-card {
   flex-shrink: 0;
-  width: 150px;
+  width: 220px;
   text-align: center;
   text-decoration: none;
   color: #4A5568;
@@ -225,9 +225,9 @@ body {
 .char-card:hover { transform: translateY(-4px); }
 
 .char-card .card-img {
-  width: 150px;
-  height: 200px;
-  border-radius: 18px;
+  width: 220px;
+  height: 293px;
+  border-radius: 22px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(8px);
@@ -360,8 +360,8 @@ body {
   .nav-btn { padding: 16px; font-size: 14px; }
 
   /* 角色卡 */
-  .char-card { width: 130px; }
-  .char-card .card-img { width: 130px; height: 174px; border-radius: 16px; }
+  .char-card { width: 185px; }
+  .char-card .card-img { width: 185px; height: 247px; border-radius: 20px; }
   .char-card .card-name { font-size: 14px; font-weight: 400; }
 
   /* About */
@@ -371,8 +371,8 @@ body {
 
 @media (max-width: 380px) {
   /* 標題區 */
-  .site-title { font-size: 18px; letter-spacing: 4px; margin-bottom: 10px; }
-  .site-subtitle { font-size: 24px; letter-spacing: 2px; margin-bottom: 12px; }
+  .char-card { width: 165px; }
+  .char-card .card-img { width: 165px; height: 220px; border-radius: 18px; }
   .site-credit { font-size: 11px; margin-bottom: 20px; }
 
   /* 角色卡 */
