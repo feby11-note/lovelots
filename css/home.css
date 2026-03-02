@@ -349,26 +349,36 @@ body {
 @media (max-width: 768px) {
   .container { padding: 44px 20px 32px; }
 
-  .site-title { font-size: 20px; }
+  /* 標題區 */
+  .site-title { font-size: 22px; letter-spacing: 5px; margin-bottom: 14px; }
+  .site-subtitle { font-size: 30px; margin-bottom: 14px; }
+  .site-credit { font-size: 12px; margin-bottom: 24px; }
 
-  .site-subtitle { font-size: 30px; }
-
+  /* 導覽 */
   .nav-label { font-size: 15px; }
-
   .carousel-label { font-size: 15px; }
-
   .nav-btn { padding: 16px; font-size: 14px; }
 
+  /* 角色卡 */
   .char-card { width: 130px; }
   .char-card .card-img { width: 130px; height: 174px; border-radius: 16px; }
   .char-card .card-name { font-size: 14px; font-weight: 400; }
 
+  /* About */
   .bottom-section { padding: 24px 20px; }
+  .bottom-avatar { width: 110px; height: 110px; }
 }
 
 @media (max-width: 380px) {
-  .site-subtitle { font-size: 26px; letter-spacing: 2px; }
+  /* 標題區 */
+  .site-title { font-size: 18px; letter-spacing: 4px; margin-bottom: 10px; }
+  .site-subtitle { font-size: 24px; letter-spacing: 2px; margin-bottom: 12px; }
+  .site-credit { font-size: 11px; margin-bottom: 20px; }
 
+  /* 角色卡 */
   .char-card { width: 115px; }
   .char-card .card-img { width: 115px; height: 154px; }
+
+  /* About */
+  .bottom-avatar { width: 96px; height: 96px; }
 }
