@@ -83,11 +83,11 @@ body {
 
 /* ===== 標題區 ===== */
 .site-title {
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   letter-spacing: 6px;
 }
 
@@ -97,7 +97,7 @@ body {
   color: #FFFFFF;
   text-align: center;
   letter-spacing: 3px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   line-height: 1.4;
   text-shadow: 0 2px 24px rgba(100, 140, 180, 0.3);
 }
@@ -349,7 +349,7 @@ body {
 @media (max-width: 768px) {
   .container { padding: 44px 20px 32px; }
 
-  .site-title { font-size: 16px; }
+  .site-title { font-size: 20px; }
 
   .site-subtitle { font-size: 30px; }
 
