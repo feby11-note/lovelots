@@ -103,10 +103,10 @@ body {
 }
 
 .site-credit {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   margin-bottom: 32px;
 }
 
