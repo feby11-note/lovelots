@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #f8f9ff;
+  overflow-x: hidden;
+  color: #444;
+}
+
+/* 背景柔光 */
+.bg-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+}
+
+.glow1 {
+  background: #ffd6f2;
+  top: -200px;
+  left: -200px;
+}
+
+.glow2 {
+  background: #c7d8ff;
+  bottom: -200px;
+  right: -200px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* 標題 */
+.main-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #888;
+  margin-bottom: 40px;
+}
+
+/* 頭像 */
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 社群 */
+.social-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.social-card {
+  padding: 14px 30px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.social-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* about */
+.about {
+  background: rgba(255,255,255,0.7);
+  padding: 25px;
+  border-radius: 20px;
+  line-height: 1.8;
+  margin-bottom: 60px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* 角色區 */
+.section-title {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.card-scroll {
+  overflow: hidden;
+  width: 100%;
+}
+
+.card-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll 20s linear infinite;
+}
+
+.char-card {
+  min-width: 140px;
+  height: 180px;
+  background: white;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  font-weight: 500;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
