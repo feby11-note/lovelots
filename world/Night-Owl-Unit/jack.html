@@ -92,19 +92,6 @@
       padding: 4.5rem 0 4rem;
     }
 
-    /* ── 返回 ── */
-    .back {
-      display: inline-block;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      margin-bottom: 2rem;
-      transition: color 0.2s;
-    }
-    .back:hover { color: var(--green-light); }
-
     /* ── 標題區 ── */
     .file-header {
       margin-bottom: 0;
@@ -169,15 +156,24 @@
       padding-bottom: calc(0.625rem + 2px);
     }
 
+    /* MEET HIM 標籤特殊色 */
+    .char-tab.tab-meet {
+  color: #F4A7B9;
+  opacity: 1;
+  margin-left: auto;
+}
+.char-tab.tab-meet.active {
+  color: #F4A7B9;
+  border-bottom-color: #F4A7B9;
+}
+
     .char-panel { display: none; }
     .char-panel.active { display: block; }
 
     /* ══════════════════════════
        FILE 面板
     ══════════════════════════ */
-    .file-panel {
-      padding-top: 2rem;
-    }
+    .file-panel { padding-top: 2rem; }
 
     .profile-layout {
       display: grid;
@@ -343,70 +339,76 @@
     }
 
     /* ══════════════════════════
-       與他相遇 CTA
+       MEET HIM 面板
     ══════════════════════════ */
-    .encounter-block {
-      margin-top: 2rem;
+    .meet-panel {
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* 圖片：固定比例，不要太高 */
+    .meet-img {
+      width: 100%;
+      max-width: 22rem;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
       border: 1px solid var(--border);
+    }
+
+    .meet-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    /* 文字卡 */
+    .meet-card {
+      width: 100%;
+      max-width: 22rem;
       background: var(--surface);
-      padding: 1.75rem 1.5rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 1.5rem 1.5rem 1.75rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1.25rem;
       text-align: center;
       position: relative;
-      overflow: hidden;
     }
 
-    /* 左上角裝飾線 */
-    .encounter-block::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3rem; height: 3rem;
-      border-top: 2px solid var(--orange);
-      border-left: 2px solid var(--orange);
-      opacity: 0.5;
+    .meet-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      opacity: 0.7;
     }
 
-    /* 右下角裝飾線 */
-    .encounter-block::after {
-      content: '';
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 3rem; height: 3rem;
-      border-bottom: 2px solid var(--orange);
-      border-right: 2px solid var(--orange);
-      opacity: 0.5;
-    }
-
-    .encounter-quote {
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    .meet-quote {
       font-size: 0.95rem;
       color: var(--text-dim);
-      line-height: 1.7;
-      max-width: 32rem;
-      letter-spacing: 0.02em;
+      line-height: 1.9;
     }
 
-    .encounter-quote::before { content: '\201C'; color: var(--orange); opacity: 0.6; margin-right: 0.1em; }
-    .encounter-quote::after  { content: '\201D'; color: var(--orange); opacity: 0.6; margin-left: 0.1em; }
-
-    .encounter-attr {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      letter-spacing: 0.15em;
+    .meet-divider {
+      width: 2rem;
+      height: 1px;
+      background: var(--border);
     }
 
-    .encounter-btn {
+    .meet-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.7rem 2rem;
+      padding: 0.65rem 2rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       text-decoration: none;
@@ -418,16 +420,15 @@
       clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px);
     }
 
-    .encounter-btn:hover {
+    .meet-btn:hover {
       background: #c5f5b0;
       transform: translateY(-1px);
     }
 
-    .encounter-btn-arrow {
-      font-size: 0.75rem;
+    .meet-btn-arrow {
       transition: transform 0.2s;
     }
-    .encounter-btn:hover .encounter-btn-arrow { transform: translateX(3px); }
+    .meet-btn:hover .meet-btn-arrow { transform: translateX(3px); }
 
     /* ── Gallery ── */
     .gallery-panel { padding-top: 2rem; }
@@ -538,16 +539,6 @@
     ══════════════════════════ */
     .stories-panel { padding-top: 2rem; }
 
-    .story-empty {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      padding: 3rem 0;
-      text-align: center;
-      border: 1px dashed rgba(74,98,128,0.4);
-    }
-
     .story-list { display: flex; flex-direction: column; }
 
     .story-item {
@@ -615,13 +606,13 @@
     @media (max-width: 680px) {
       .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
-        position: static;
-        max-width: 260px;
-        margin: 0 auto;
-      }
+      position: static;
+      max-width: 260px;
+      margin: 0 auto;
+    }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
-      .nav-links { display: none; }
+      .nav-links { display: none; }   /* ← 這行刪掉 */
     }
 
     @media (max-width: 420px) {
@@ -659,6 +650,7 @@
       <button class="char-tab active" onclick="switchCharTab('file', this)">FILE</button>
       <button class="char-tab" onclick="switchCharTab('gallery', this)">GALLERY</button>
       <button class="char-tab" onclick="switchCharTab('stories', this)">HIS PAST</button>
+      <button class="char-tab tab-meet" onclick="switchCharTab('meet', this)">MEET HIM</button>
     </div>
 
     <!-- ① FILE -->
@@ -666,12 +658,10 @@
       <div class="file-panel">
         <div class="profile-layout">
 
-          <!-- 左：角色圖 -->
           <div class="profile-img">
             <img src="../../pic/characters/jack/1.jpeg" alt="傑克">
           </div>
 
-          <!-- 右：軍方檔案 -->
           <div class="profile-file">
 
             <div class="pf-top">
@@ -681,7 +671,6 @@
               </span>
             </div>
 
-            <!-- 身份 -->
             <div class="pf-block">
               <div class="pf-block-title">IDENTIFICATION</div>
               <div class="pf-grid col2">
@@ -701,7 +690,6 @@
               </div>
             </div>
 
-            <!-- 軍事 -->
             <div class="pf-block">
               <div class="pf-block-title">MILITARY STATUS</div>
               <div class="pf-grid col2">
@@ -726,7 +714,6 @@
               </div>
             </div>
 
-            <!-- 體格 -->
             <div class="pf-block">
               <div class="pf-block-title">PHYSICAL DATA</div>
               <div class="pf-grid col4">
@@ -753,7 +740,6 @@
               </div>
             </div>
 
-            <!-- 個人 -->
             <div class="pf-block">
               <div class="pf-block-title">PERSONAL DATA</div>
               <div class="pf-grid col2">
@@ -776,7 +762,6 @@
               </div>
             </div>
 
-            <!-- 備註 -->
             <div class="pf-block">
               <div class="pf-block-title">REMARKS</div>
               <div class="pf-remark">
@@ -789,30 +774,15 @@
               </div>
             </div>
 
-            <!-- 底部 -->
             <div class="pf-bottom">
               <span class="pf-classify">TOP SECRET — LEVEL 4 CLEARANCE REQUIRED</span>
               <span class="pf-stamp">VERIFIED ✓</span>
             </div>
 
-          </div><!-- /profile-file -->
-        </div><!-- /profile-layout -->
-
-        <!-- ── 與他相遇 CTA ── -->
-        <div class="encounter-block">
-          <div class="encounter-quote">你來找我，還是被我找到——其實沒什麼差別。</div>
-          <div class="encounter-attr">— JACK WILSON · CODENAME: WOLF</div>
-          <a href="https://app.floze.ai/link/role/DgfDODaeFsi1JCxLk1F1d9Kk0/?locale=tw"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="encounter-btn">
-            與他相遇
-            <span class="encounter-btn-arrow">→</span>
-          </a>
+          </div>
         </div>
-
-      </div><!-- /file-panel -->
-    </div><!-- /char-file -->
+      </div>
+    </div>
 
     <!-- ② GALLERY -->
     <div class="char-panel" id="char-gallery">
@@ -878,6 +848,31 @@
           </a>
 
         </div>
+      </div>
+    </div>
+
+    <!-- ④ MEET HIM -->
+    <div class="char-panel" id="char-meet">
+      <div class="meet-panel">
+
+        <div class="meet-img">
+          <img src="../../pic/characters/jack/1.jpeg" alt="傑克">
+        </div>
+
+        <div class="meet-card">
+          <div class="meet-label">WOLF · JACK WILSON · NOU-001</div>
+          <div class="meet-divider"></div>
+          <div class="meet-quote">
+            你來找我，還是被我找到——<br>其實沒什麼差別。
+          </div>
+          <a href="https://app.floze.ai/link/role/DgfDODaeFsi1JCxLk1F1d9Kk0/?locale=tw"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="meet-btn">
+            與他相遇 <span class="meet-btn-arrow">→</span>
+          </a>
+        </div>
+
       </div>
     </div>
 
