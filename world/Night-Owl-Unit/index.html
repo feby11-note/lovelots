@@ -10,7 +10,7 @@
 <body class="owl-page">
 
   <nav class="owl-nav">
-    <a href="../index.html" class="owl-nav-brand">◁ 戀愛世界</a>
+    <a href="../index.html" class="owl-nav-brand">◁ NIGHT OWL</a>
     <button class="owl-hamburger-btn" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -20,46 +20,54 @@
     <div class="owl-hamburger-overlay" onclick="toggleMenu()"></div>
     <div class="owl-hamburger-content">
       <button class="owl-hamburger-close" onclick="toggleMenu()">✕</button>
-      <p class="owl-hamburger-label">members</p>
-      <a href="jack.html" class="owl-hamburger-link">傑克</a>
-      <a href="kane.html" class="owl-hamburger-link">凱恩</a>
-      <a href="leo.html" class="owl-hamburger-link">里歐</a>
-      <a href="theo.html" class="owl-hamburger-link">席奧</a>
-      <p class="owl-hamburger-label">navigate</p>
-      <a href="../index.html" class="owl-hamburger-link">← 戀愛世界</a>
-      <a href="../../index.html" class="owl-hamburger-link">← 首頁</a>
+      <p class="owl-hamburger-label label-members">members</p>
+      <a href="jack.html" class="owl-hamburger-link link-members">傑克</a>
+      <a href="kane.html" class="owl-hamburger-link link-members">凱恩</a>
+      <a href="leo.html" class="owl-hamburger-link link-members">里歐</a>
+      <a href="theo.html" class="owl-hamburger-link link-members">席奧</a>
+      <p class="owl-hamburger-label label-navigate">navigate</p>
+      <a href="../index.html" class="owl-hamburger-link link-navigate">← 戀愛世界</a>
+      <a href="../../index.html" class="owl-hamburger-link link-navigate">← 首頁</a>
     </div>
   </div>
 
   <div class="owl-main">
 
+    <!-- Header -->
     <div class="owl-header">
-      <div class="owl-header-top">
+      <div class="owl-header-eyebrow">
         <span class="owl-badge owl-badge-orange">CLASSIFIED — LEVEL 4</span>
         <span class="owl-badge owl-badge-green">ACTIVE</span>
       </div>
-      <h1>Night Owl<br>Squadron</h1>
-      <p class="tagline">// 在黑暗中行動，在夜色中守望。</p>
+      <div class="owl-header-title-block">
+        <span class="owl-header-zh">夜梟部隊</span>
+        <span class="owl-header-en">Night Owl Unit</span>
+      </div>
+      <p class="owl-header-tagline" id="tagline"></p>
     </div>
 
-    <div class="owl-tabs">
-      <button class="owl-tab active" onclick="switchTab('overview', this)">部隊簡介</button>
-      <button class="owl-tab" onclick="switchTab('building', this)">T-Building</button>
-      <button class="owl-tab" onclick="switchTab('history', this)">部隊歷史</button>
-      <button class="owl-tab" onclick="switchTab('members', this)">部隊成員</button>
-      <button class="owl-tab" onclick="switchTab('secrets', this)">部隊秘聞</button>
+    <!-- 檔案夾標籤 -->
+    <div class="owl-tab-bar">
+      <button class="owl-tab active" onclick="switchTab('overview', this)">概況</button>
+      <button class="owl-tab" onclick="switchTab('history', this)">歷史</button>
+      <button class="owl-tab" onclick="switchTab('building', this)">基地</button>
+      <button class="owl-tab" onclick="switchTab('members', this)">成員</button>
+      <button class="owl-tab" onclick="switchTab('secrets', this)">秘聞</button>
     </div>
 
-    <!-- ① 部隊簡介 -->
+    <!-- ① 概況 -->
     <div id="tab-overview" class="owl-tab-content active">
 
-      <div class="owl-section-label">
-        Unit Briefing
-        <span class="owl-section-id">DOC-NOW-001</span>
+      <div class="owl-section-head">
+        <div class="owl-section-left">
+          <div class="owl-section-en">Unit Briefing</div>
+          <div class="owl-section-zh">部隊簡介</div>
+        </div>
+        <div class="owl-section-id">DOC-NOW-001</div>
       </div>
 
       <p class="owl-text">
-        夜梟部隊，代號 Night Owl，隸屬於特種作戰司令部直屬秘密單位。
+        夜梟部隊（Night Owl Unit），隸屬於特種作戰司令部直屬秘密單位。
         對外以跨國安保顧問公司為掩護，實際執行境內外高風險滲透、反恐與情報任務。
       </p>
       <p class="owl-text">
@@ -73,9 +81,12 @@
 
       <div class="owl-divider"></div>
 
-      <div class="owl-section-label">
-        Unit Data
-        <span class="owl-section-id">DOC-NOW-001-A</span>
+      <div class="owl-section-head">
+        <div class="owl-section-left">
+          <div class="owl-section-en">Unit Data</div>
+          <div class="owl-section-zh">部隊資料</div>
+        </div>
+        <div class="owl-section-id">DOC-NOW-001-A</div>
       </div>
 
       <div class="owl-data-list">
@@ -113,20 +124,85 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- /tab-overview -->
 
-    <!-- ② T-Building -->
-    <div id="tab-building" class="owl-tab-content">
+    <!-- ② 歷史 -->
+    <div id="tab-history" class="owl-tab-content">
 
-      <div class="owl-section-label">
-        T-Building / 總部
-        <span class="owl-section-id">DOC-NOW-002</span>
+      <div class="owl-section-head">
+        <div class="owl-section-left">
+          <div class="owl-section-en">Unit History</div>
+          <div class="owl-section-zh">部隊歷史</div>
+        </div>
+        <div class="owl-section-id">DOC-NOW-003</div>
       </div>
 
-      <p class="owl-text">夜梟部隊總部，對外以普通辦公大樓為掩護。點擊各樓層展開，再點選空間查看詳細介紹。</p>
+      <p class="owl-text">以下為部隊成立至今的重要事件紀錄，僅供 Level 4 以上人員閱覽。</p>
 
       <div class="owl-divider"></div>
 
+      <div class="owl-timeline">
+
+        <div class="owl-timeline-item">
+          <div class="owl-timeline-left">
+            <div class="owl-timeline-year">20XX<br>· ??</div>
+          </div>
+          <div class="owl-timeline-right">
+            <div class="owl-timeline-title">？？？</div>
+            <div class="owl-timeline-text">此事件記錄已被列為最高機密，所有相關檔案均已封存。</div>
+          </div>
+        </div>
+
+        <div class="owl-timeline-item">
+          <div class="owl-timeline-left">
+            <div class="owl-timeline-year">20XX<br>· 11</div>
+          </div>
+          <div class="owl-timeline-right">
+            <div class="owl-timeline-title">席奧離隊</div>
+            <div class="owl-timeline-text">前副隊長席奧因不明原因申請離隊，此後轉入地下，成為黑市管理者。離隊原因至今未公開。</div>
+          </div>
+        </div>
+
+        <div class="owl-timeline-item">
+          <div class="owl-timeline-left">
+            <div class="owl-timeline-year">20XX<br>· 07</div>
+          </div>
+          <div class="owl-timeline-right">
+            <div class="owl-timeline-title">代號「黑羽」</div>
+            <div class="owl-timeline-text">部隊首次執行境外高風險任務，目標與詳情列為最高機密，僅傑克握有完整資料。</div>
+          </div>
+        </div>
+
+        <div class="owl-timeline-item">
+          <div class="owl-timeline-left">
+            <div class="owl-timeline-year">20XX<br>· 03</div>
+          </div>
+          <div class="owl-timeline-right">
+            <div class="owl-timeline-title">部隊成立</div>
+            <div class="owl-timeline-text">夜梟部隊正式由特種作戰司令部授權成立，首任隊長由傑克擔任。</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /tab-history -->
+
+    <!-- ③ 基地 -->
+    <div id="tab-building" class="owl-tab-content">
+
+      <div class="owl-section-head">
+        <div class="owl-section-left">
+          <div class="owl-section-en">T-Building</div>
+          <div class="owl-section-zh">部隊總部</div>
+        </div>
+        <div class="owl-section-id">DOC-NOW-002</div>
+      </div>
+
+      <p class="owl-text">總部對外以普通辦公大樓為掩護。點擊各樓層展開，再點選空間查看詳細介紹。</p>
+
+      <div class="owl-divider"></div>
+
+      <!-- T-Building 樓層 -->
       <div class="owl-floor-list">
 
         <div class="owl-floor-item">
@@ -145,12 +221,8 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">🔫</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">存放部隊所有武器與裝備，需 Level 3 以上授權才可進入。所有武器均已編號建檔，每次取用皆有紀錄。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">🔫</div></div>
+                  <div class="owl-room-desc">存放部隊所有武器與裝備，需 Level 3 以上授權才可進入。所有武器均已編號建檔，每次取用皆有紀錄。</div>
                 </div>
               </div>
               <div class="owl-room-item">
@@ -160,12 +232,8 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">🏋️</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">日常體能與戰術訓練場地，24 小時開放。設有射擊模擬區、近戰訓練區與障礙場。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">🏋️</div></div>
+                  <div class="owl-room-desc">日常體能與戰術訓練場地，24 小時開放。設有射擊模擬區、近戰訓練區與障礙場。</div>
                 </div>
               </div>
             </div>
@@ -188,12 +256,8 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">🗺️</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">所有任務出發前的簡報都在這裡進行。牆面為全幅投影螢幕，僅限部隊成員與直屬長官進入。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">🗺️</div></div>
+                  <div class="owl-room-desc">所有任務出發前的簡報都在這裡進行。牆面為全幅投影螢幕，僅限部隊成員與直屬長官進入。</div>
                 </div>
               </div>
               <div class="owl-room-item">
@@ -203,12 +267,8 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">🖥️</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">即時監控全球動態，情報分析師常駐於此。所有進出資料均加密，外部無法截取。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">🖥️</div></div>
+                  <div class="owl-room-desc">即時監控全球動態，情報分析師常駐於此。所有進出資料均加密，外部無法截取。</div>
                 </div>
               </div>
             </div>
@@ -231,12 +291,8 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">🏛️</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">對外掩護的公司大廳，訪客只能到達此處。前台由經過訓練的行政人員駐守。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">🏛️</div></div>
+                  <div class="owl-room-desc">對外掩護的公司大廳，訪客只能到達此處。前台由經過訓練的行政人員駐守。</div>
                 </div>
               </div>
             </div>
@@ -259,12 +315,8 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">🛏️</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">各隊員的私人房間，房門設有生物辨識鎖。這裡填入更多說明。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">🛏️</div></div>
+                  <div class="owl-room-desc">各隊員的私人房間，房門設有生物辨識鎖。這裡填入更多說明。</div>
                 </div>
               </div>
               <div class="owl-room-item">
@@ -274,80 +326,247 @@
                   <span class="owl-room-arrow">▼</span>
                 </button>
                 <div class="owl-room-detail">
-                  <div class="owl-room-img">
-                    <div class="img-placeholder">☕</div>
-                  </div>
-                  <div class="owl-room-body">
-                    <div class="owl-room-desc">隊員共用的廚房與休息空間，是難得可以放鬆的地方。這裡填入更多說明。</div>
-                  </div>
+                  <div class="owl-room-img"><div class="img-placeholder">☕</div></div>
+                  <div class="owl-room-desc">隊員共用的廚房與休息空間，是難得可以放鬆的地方。這裡填入更多說明。</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <!-- ③ 部隊歷史 -->
-    <div id="tab-history" class="owl-tab-content">
-
-      <div class="owl-section-label">
-        Unit History
-        <span class="owl-section-id">DOC-NOW-003</span>
-      </div>
-
-      <p class="owl-text">以下為夜梟部隊成立至今的重要事件紀錄，僅供 Level 4 以上人員閱覽。</p>
-
-      <div class="owl-divider"></div>
-
-      <div class="owl-timeline">
-        <div class="owl-timeline-item">
-          <div class="owl-timeline-left">
-            <div class="owl-timeline-year">20XX<br>· 03</div>
-          </div>
-          <div class="owl-timeline-right">
-            <div class="owl-timeline-title">部隊成立</div>
-            <div class="owl-timeline-text">夜梟部隊正式由特種作戰司令部授權成立，首任隊長由傑克擔任。這裡填入更多說明文字。</div>
-          </div>
-        </div>
-        <div class="owl-timeline-item">
-          <div class="owl-timeline-left">
-            <div class="owl-timeline-year">20XX<br>· 07</div>
-          </div>
-          <div class="owl-timeline-right">
-            <div class="owl-timeline-title">代號「黑羽」</div>
-            <div class="owl-timeline-text">部隊首次執行境外高風險任務，目標與詳情列為最高機密，僅傑克握有完整資料。</div>
-          </div>
-        </div>
-        <div class="owl-timeline-item">
-          <div class="owl-timeline-left">
-            <div class="owl-timeline-year">20XX<br>· 11</div>
-          </div>
-          <div class="owl-timeline-right">
-            <div class="owl-timeline-title">席奧離隊</div>
-            <div class="owl-timeline-text">前副隊長席奧因不明原因申請離隊，此後轉入地下，成為黑市管理者。離隊原因至今未公開。</div>
+        <div class="owl-floor-item">
+          <button class="owl-floor-toggle" onclick="toggleFloor(this)">
+            <span class="owl-floor-tag">3F</span>
+            <span class="owl-floor-name">三樓</span>
+            <span class="owl-floor-desc-short">醫療室 · 檔案室</span>
+            <span class="owl-floor-arrow">▼</span>
+          </button>
+          <div class="owl-floor-detail">
+            <div class="owl-room-list">
+              <div class="owl-room-item">
+                <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                  <span class="owl-room-icon">🏥</span>
+                  <span class="owl-room-name">醫療室</span>
+                  <span class="owl-room-arrow">▼</span>
+                </button>
+                <div class="owl-room-detail">
+                  <div class="owl-room-img"><div class="img-placeholder">🏥</div></div>
+                  <div class="owl-room-desc">配備基礎外科手術設備，由駐隊醫療人員負責維護。任務結束後的傷勢處理多在此進行，不對外就醫以避免留下紀錄。</div>
+                </div>
+              </div>
+              <div class="owl-room-item">
+                <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                  <span class="owl-room-icon">🗄️</span>
+                  <span class="owl-room-name">機密檔案室</span>
+                  <span class="owl-room-arrow">▼</span>
+                </button>
+                <div class="owl-room-detail">
+                  <div class="owl-room-img"><div class="img-placeholder">🗄️</div></div>
+                  <div class="owl-room-desc">存放所有紙本機密文件與任務紀錄。進入需雙重身份驗證，且不得攜帶任何電子裝置。據說連傑克也只有部分檔案的閱覽權限。</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="owl-timeline-item">
-          <div class="owl-timeline-left">
-            <div class="owl-timeline-year">20XX<br>· ??</div>
-          </div>
-          <div class="owl-timeline-right">
-            <div class="owl-timeline-title">？？？</div>
-            <div class="owl-timeline-text">此事件記錄已被列為最高機密，所有相關檔案均已封存。</div>
+
+        <div class="owl-floor-item">
+          <button class="owl-floor-toggle" onclick="toggleFloor(this)">
+            <span class="owl-floor-tag">4F</span>
+            <span class="owl-floor-name">四樓</span>
+            <span class="owl-floor-desc-short">指揮官室 · 會議室</span>
+            <span class="owl-floor-arrow">▼</span>
+          </button>
+          <div class="owl-floor-detail">
+            <div class="owl-room-list">
+              <div class="owl-room-item">
+                <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                  <span class="owl-room-icon">🪑</span>
+                  <span class="owl-room-name">指揮官室</span>
+                  <span class="owl-room-arrow">▼</span>
+                </button>
+                <div class="owl-room-detail">
+                  <div class="owl-room-img"><div class="img-placeholder">🪑</div></div>
+                  <div class="owl-room-desc">傑克的辦公室，也是他花最多時間待著的地方。房間整潔，桌上只有一疊文件和一杯永遠不知道是熱是冷的咖啡。窗戶正對著街道。</div>
+                </div>
+              </div>
+              <div class="owl-room-item">
+                <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                  <span class="owl-room-icon">📊</span>
+                  <span class="owl-room-name">高層會議室</span>
+                  <span class="owl-room-arrow">▼</span>
+                </button>
+                <div class="owl-room-detail">
+                  <div class="owl-room-img"><div class="img-placeholder">📊</div></div>
+                  <div class="owl-room-desc">用於與司令部直屬長官進行加密視訊會議。隊員極少被允許進入，凱恩是唯一的例外。會議內容從不對外透露。</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div><!-- /owl-floor-list T-Building -->
 
-    <!-- ④ 部隊成員 -->
+      <!-- 境外駐紮地點 -->
+      <div class="owl-offsite-section">
+        <div class="owl-offsite-label">
+          <span class="owl-offsite-label-text">OUTPOST · 境外駐紮地點</span>
+          <span class="owl-offsite-label-line"></span>
+          <span class="owl-offsite-label-text">LEVEL 3 RESTRICTED</span>
+        </div>
+
+        <div class="owl-floor-list">
+
+          <div class="owl-floor-item">
+            <button class="owl-floor-toggle" onclick="toggleFloor(this)">
+              <span class="owl-floor-tag">A-1</span>
+              <span class="owl-floor-name">東南亞據點</span>
+              <span class="owl-floor-desc-short">長期駐紮 · 掩護身份：貿易公司</span>
+              <span class="owl-floor-arrow">▼</span>
+            </button>
+            <div class="owl-floor-detail">
+              <div class="owl-room-list">
+                <div class="owl-room-item">
+                  <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                    <span class="owl-room-icon">🏢</span>
+                    <span class="owl-room-name">掩護辦公室</span>
+                    <span class="owl-room-arrow">▼</span>
+                  </button>
+                  <div class="owl-room-detail">
+                    <div class="owl-room-img"><div class="img-placeholder">🏢</div></div>
+                    <div class="owl-room-desc">對外以進出口貿易公司為掩護，實際負責區域情報蒐集與聯絡工作。駐點人員輪班，每三個月換一批。</div>
+                  </div>
+                </div>
+                <div class="owl-room-item">
+                  <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                    <span class="owl-room-icon">🔐</span>
+                    <span class="owl-room-name">安全屋</span>
+                    <span class="owl-room-arrow">▼</span>
+                  </button>
+                  <div class="owl-room-detail">
+                    <div class="owl-room-img"><div class="img-placeholder">🔐</div></div>
+                    <div class="owl-room-desc">任務期間供隊員臨時棲身的隱密住所，地點每次任務後更換。傑克與凱恩曾在此共同執行過為期兩週的境外任務。</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="owl-floor-item">
+            <button class="owl-floor-toggle" onclick="toggleFloor(this)">
+              <span class="owl-floor-tag">A-2</span>
+              <span class="owl-floor-name">歐洲聯絡站</span>
+              <span class="owl-floor-desc-short">非常設 · 任務期間啟用</span>
+              <span class="owl-floor-arrow">▼</span>
+            </button>
+            <div class="owl-floor-detail">
+              <div class="owl-room-list">
+                <div class="owl-room-item">
+                  <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                    <span class="owl-room-icon">🏨</span>
+                    <span class="owl-room-name">長住型飯店房間</span>
+                    <span class="owl-room-arrow">▼</span>
+                  </button>
+                  <div class="owl-room-detail">
+                    <div class="owl-room-img"><div class="img-placeholder">🏨</div></div>
+                    <div class="owl-room-desc">以商務旅客身份長住，房間內建加密通訊設備。里歐第一次獨立執行境外任務時曾在此駐紮，據說他把整個房間佈置得「太舒適」，被凱恩念了很久。</div>
+                  </div>
+                </div>
+                <div class="owl-room-item">
+                  <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                    <span class="owl-room-icon">🚗</span>
+                    <span class="owl-room-name">機動車輛停放點</span>
+                    <span class="owl-room-arrow">▼</span>
+                  </button>
+                  <div class="owl-room-detail">
+                    <div class="owl-room-img"><div class="img-placeholder">🚗</div></div>
+                    <div class="owl-room-desc">任務用車輛的停放與換牌地點，位於市郊一處不起眼的私人車庫。車輛均以第三方名義登記。</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="owl-floor-item">
+            <button class="owl-floor-toggle" onclick="toggleFloor(this)">
+              <span class="owl-floor-tag">A-3</span>
+              <span class="owl-floor-name">中東前進基地</span>
+              <span class="owl-floor-desc-short">高風險區域 · 現已停用</span>
+              <span class="owl-floor-arrow">▼</span>
+            </button>
+            <div class="owl-floor-detail">
+              <div class="owl-room-list">
+                <div class="owl-room-item">
+                  <button class="owl-room-toggle" onclick="toggleRoom(this)">
+                    <span class="owl-room-icon">⚠️</span>
+                    <span class="owl-room-name">廢棄倉庫據點</span>
+                    <span class="owl-room-arrow">▼</span>
+                  </button>
+                  <div class="owl-room-detail">
+                    <div class="owl-room-img"><div class="img-placeholder">⚠️</div></div>
+                    <div class="owl-room-desc">曾作為高風險任務的臨時指揮所，現已廢棄。停用原因列為機密。據部分成員透露，席奧離隊一事與此地點有所關聯，但從未獲得證實。</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /owl-floor-list 駐紮地點 -->
+      </div><!-- /owl-offsite-section 駐紮地點 -->
+
+      <!-- 隊員私下活動地點 -->
+      <div class="owl-offsite-section">
+        <div class="owl-offsite-label">
+          <span class="owl-offsite-label-text">OFF-DUTY · 私下活動地點</span>
+          <span class="owl-offsite-label-line"></span>
+          <span class="owl-offsite-label-text">NON-CLASSIFIED</span>
+        </div>
+        <div class="owl-offsite-grid">
+          <div class="owl-offsite-card">
+            <div class="owl-offsite-icon">🥃</div>
+            <div class="owl-offsite-name">老鷹酒吧</div>
+            <div class="owl-offsite-who">傑克 · 凱恩 常客</div>
+            <div class="owl-offsite-desc">
+              距離 T-Building 三個街口的小酒吧。老闆認識傑克，從來不多問。傑克習慣坐最裡面那個位子，背對著牆。
+            </div>
+          </div>
+          <div class="owl-offsite-card">
+            <div class="owl-offsite-icon">🏊</div>
+            <div class="owl-offsite-name">公立游泳館</div>
+            <div class="owl-offsite-who">里歐 常客</div>
+            <div class="owl-offsite-desc">
+              里歐唯一的「正常休閒」。每週至少去兩次，說是可以讓腦袋放空。凱恩去過一次，再也不去了，原因不明。
+            </div>
+          </div>
+          <div class="owl-offsite-card">
+            <div class="owl-offsite-icon">📚</div>
+            <div class="owl-offsite-name">舊書店「第二頁」</div>
+            <div class="owl-offsite-who">凱恩 常客</div>
+            <div class="owl-offsite-desc">
+              凱恩偶爾會去翻舊書。他不太解釋自己為什麼喜歡那裡，有人說曾經在店裡看到他站著讀完整本書。
+            </div>
+          </div>
+          <div class="owl-offsite-card">
+            <div class="owl-offsite-icon">🌆</div>
+            <div class="owl-offsite-name">某處天台</div>
+            <div class="owl-offsite-who">席奧 · 現已不明</div>
+            <div class="owl-offsite-desc">
+              具體位置不詳。離隊前席奧偶爾會去那裡待著，沒有人知道他在那裡做什麼。
+            </div>
+          </div>
+        </div>
+      </div><!-- /owl-offsite-section 私下活動 -->
+
+    </div><!-- /tab-building -->
+
+    <!-- ④ 成員 -->
     <div id="tab-members" class="owl-tab-content">
 
-      <div class="owl-section-label">
-        Personnel
-        <span class="owl-section-id">DOC-NOW-004</span>
+      <div class="owl-section-head">
+        <div class="owl-section-left">
+          <div class="owl-section-en">Personnel</div>
+          <div class="owl-section-zh">部隊成員</div>
+        </div>
+        <div class="owl-section-id">DOC-NOW-004</div>
       </div>
 
       <p class="owl-text">點擊成員卡片查看完整個人檔案。</p>
@@ -355,11 +574,8 @@
       <div class="owl-divider"></div>
 
       <div class="owl-member-grid">
-
         <a href="jack.html" class="owl-member-card">
-          <div class="owl-member-img">
-            <div class="img-placeholder">👤</div>
-          </div>
+          <div class="owl-member-img"><div class="img-placeholder">👤</div></div>
           <div class="owl-member-info">
             <div class="owl-member-rank">CAPTAIN · 上尉</div>
             <div class="owl-member-name">傑克</div>
@@ -370,11 +586,8 @@
             </div>
           </div>
         </a>
-
         <a href="kane.html" class="owl-member-card">
-          <div class="owl-member-img">
-            <div class="img-placeholder">👤</div>
-          </div>
+          <div class="owl-member-img"><div class="img-placeholder">👤</div></div>
           <div class="owl-member-info">
             <div class="owl-member-rank">LIEUTENANT · 中尉</div>
             <div class="owl-member-name">凱恩</div>
@@ -385,11 +598,8 @@
             </div>
           </div>
         </a>
-
         <a href="leo.html" class="owl-member-card">
-          <div class="owl-member-img">
-            <div class="img-placeholder">👤</div>
-          </div>
+          <div class="owl-member-img"><div class="img-placeholder">👤</div></div>
           <div class="owl-member-info">
             <div class="owl-member-rank">SERGEANT · 中士</div>
             <div class="owl-member-name">里歐</div>
@@ -400,11 +610,8 @@
             </div>
           </div>
         </a>
-
         <a href="theo.html" class="owl-member-card">
-          <div class="owl-member-img">
-            <div class="img-placeholder">👤</div>
-          </div>
+          <div class="owl-member-img"><div class="img-placeholder">👤</div></div>
           <div class="owl-member-info">
             <div class="owl-member-rank">EX-LIEUTENANT</div>
             <div class="owl-member-name">席奧</div>
@@ -415,17 +622,19 @@
             </div>
           </div>
         </a>
-
       </div>
 
-    </div>
+    </div><!-- /tab-members -->
 
-    <!-- ⑤ 部隊秘聞 -->
+    <!-- ⑤ 秘聞 -->
     <div id="tab-secrets" class="owl-tab-content">
 
-      <div class="owl-section-label">
-        Classified Files
-        <span class="owl-section-id">DOC-NOW-005</span>
+      <div class="owl-section-head">
+        <div class="owl-section-left">
+          <div class="owl-section-en">Classified Files</div>
+          <div class="owl-section-zh">部隊秘聞</div>
+        </div>
+        <div class="owl-section-id">DOC-NOW-005</div>
       </div>
 
       <p class="owl-text">那些沒有記錄在任何正式文件裡的事。</p>
@@ -434,7 +643,7 @@
 
       <div class="secret-tabs">
         <button class="secret-tab-btn active" onclick="switchSecret('chat', this)">💬 聊天記錄</button>
-        <button class="secret-tab-btn" onclick="switchSecret('diary', this)">📓 手記</button>
+        <button class="secret-tab-btn" onclick="switchSecret('diary', this)">📓 個人日記</button>
         <button class="secret-tab-btn" onclick="switchSecret('report', this)">📋 任務報告</button>
       </div>
 
@@ -448,13 +657,11 @@
               <div class="chat-header-members">傑克 · 凱恩 · 里歐 · 席奧（4）</div>
             </div>
           </div>
-
           <div class="chat-sessions">
             <button class="chat-session-btn active" onclick="switchChatSession('s1', this)">20XX.03.15</button>
             <button class="chat-session-btn" onclick="switchChatSession('s2', this)">20XX.07.22</button>
             <button class="chat-session-btn" onclick="switchChatSession('s3', this)">20XX.11.04</button>
           </div>
-
           <div class="chat-body">
 
             <div class="chat-session active" id="chat-s1">
@@ -577,33 +784,152 @@
 
           </div>
         </div>
-      </div>
+      </div><!-- /secret-chat -->
 
-      <!-- 手記 -->
+      <!-- 個人日記 -->
       <div class="secret-panel" id="secret-diary">
-        <div class="diary-list">
-          <div class="diary-item">
-            <div class="diary-date">20XX · XX · XX</div>
-            <div class="diary-title">不在計畫裡的事</div>
-            <div class="diary-text">
-              今天的任務提前結束了。原本應該直接回基地，但我繞了路。<br><br>
-              說不清楚為什麼，只是想在回去之前，多給自己一點時間。
-              街上的燈都亮著，路上有賣宵夜的攤子，有情侶在牽手——
-              那些畫面看起來很遠，像隔著一層玻璃。<br><br>
-              不知道從什麼時候開始，我會想，如果她也在這裡就好了。
-            </div>
+        <div class="diary-layout">
+
+          <div class="diary-person-tabs">
+            <button class="diary-person-btn active" onclick="switchDiaryPerson('jack', this)">傑克</button>
+            <button class="diary-person-btn" onclick="switchDiaryPerson('kane', this)">凱恩</button>
+            <button class="diary-person-btn" onclick="switchDiaryPerson('leo', this)">里歐</button>
+            <button class="diary-person-btn" onclick="switchDiaryPerson('theo', this)">席奧</button>
           </div>
-          <div class="diary-item">
-            <div class="diary-date">20XX · XX · XX</div>
-            <div class="diary-title">凱恩說的話</div>
-            <div class="diary-text">
-              凱恩今天突然冒出一句：「隊長，你最近笑得比較多。」<br><br>
-              我說不知道你在說什麼。他說好，然後走掉了。<br><br>
-              里歐在旁邊假裝在看報告，但我看到他在憋笑。
+
+          <div class="diary-person-content">
+
+            <!-- 傑克 -->
+            <div class="diary-person-panel active" id="diary-jack">
+              <div class="diary-jack-wrap">
+                <div class="diary-jack-item">
+                  <div class="diary-jack-date">20XX · XX · XX</div>
+                  <div class="diary-jack-title">不在計畫裡的事<span class="diary-jack-pink"> ✦</span></div>
+                  <div class="diary-jack-doodle">— — —</div>
+                  <div class="diary-jack-text">
+                    今天的任務提前結束了。原本應該直接回基地，但我繞了路。<br><br>
+                    說不清楚為什麼，只是想在回去之前，多給自己一點時間。街上的燈都亮著，路上有賣宵夜的攤子，有情侶在牽手——那些畫面看起來很遠，像隔著一層玻璃。<br><br>
+                    不知道從什麼時候開始，我會想，如果她也在這裡就好了。
+                  </div>
+                  <div class="diary-jack-corner">♡</div>
+                </div>
+                <div class="diary-jack-item">
+                  <div class="diary-jack-date">20XX · XX · XX</div>
+                  <div class="diary-jack-title">凱恩說的話</div>
+                  <div class="diary-jack-doodle">— — —</div>
+                  <div class="diary-jack-text">
+                    凱恩今天突然冒出一句：「隊長，你最近笑得比較多。」<br><br>
+                    我說不知道你在說什麼。他說好，然後走掉了。<br><br>
+                    里歐在旁邊假裝在看報告，但我看到他在憋笑。<span class="diary-jack-pink"> ···</span>
+                  </div>
+                  <div class="diary-jack-corner">♡</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
+
+            <!-- 凱恩 -->
+            <div class="diary-person-panel" id="diary-kane">
+              <div class="diary-kane-wrap">
+                <div class="diary-kane-header-bar">
+                  <span class="diary-kane-header-title">PERSONAL LOG — KANE</span>
+                  <span class="diary-kane-header-stamp">ENCRYPTED · LV.3</span>
+                </div>
+                <div class="diary-kane-item">
+                  <div class="diary-kane-meta">
+                    <span class="diary-kane-date">20XX · XX · XX</span>
+                    <span class="diary-kane-id">LOG-K-001</span>
+                  </div>
+                  <div class="diary-kane-title">不需要解釋的事</div>
+                  <div class="diary-kane-text">
+                    有些事不需要說清楚，看一眼就知道了。<br><br>
+                    比如說，隊長今天訓練結束之後沒有直接離開，他站在窗邊看了很久。我知道他在想什麼，但我不打算問。<br><br>
+                    有些事說出口就壞了。
+                  </div>
+                </div>
+                <div class="diary-kane-item">
+                  <div class="diary-kane-meta">
+                    <span class="diary-kane-date">20XX · XX · XX</span>
+                    <span class="diary-kane-id">LOG-K-002</span>
+                  </div>
+                  <div class="diary-kane-title">效率問題</div>
+                  <div class="diary-kane-text">
+                    里歐今天訓練遲到了十一分鐘。<br><br>
+                    原因：手機沒充電，鬧鐘沒響。<br><br>
+                    我已經告訴他第四次了。下次我不打算再說。
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 里歐 -->
+            <div class="diary-person-panel" id="diary-leo">
+              <div class="diary-leo-wrap">
+                <div class="diary-leo-topbar">
+                  <span class="diary-leo-topbar-icon">🐰</span>
+                  <span class="diary-leo-topbar-text">LEO'S DIARY · PRIVATE · DO NOT READ</span>
+                </div>
+                <div class="diary-leo-item">
+                  <div class="diary-leo-header">
+                    <span class="diary-leo-bunny">🐰</span>
+                    <span class="diary-leo-date">20XX · XX · XX</span>
+                  </div>
+                  <div class="diary-leo-title">今天也是平靜的一天</div>
+                  <div class="diary-leo-text">
+                    沒有任務。難得的休息日。<br><br>
+                    早上訓練，下午看了兩部電影，晚上被凱恩拉去打牌輸了三局。隊長整個下午都在看手機，臉上有一點點——真的只有一點點——的笑。<br><br>
+                    我覺得我懂了，但我不說。
+                  </div>
+                  <div class="diary-leo-footer">
+                    <span class="diary-leo-stamp">今日心情 ★★★★☆</span>
+                    <span class="diary-leo-mood">🐰</span>
+                  </div>
+                </div>
+                <div class="diary-leo-item">
+                  <div class="diary-leo-header">
+                    <span class="diary-leo-bunny">🐰</span>
+                    <span class="diary-leo-date">20XX · XX · XX</span>
+                  </div>
+                  <div class="diary-leo-title">凱恩說我遲到了</div>
+                  <div class="diary-leo-text">
+                    才十一分鐘而已！！<br><br>
+                    而且我有原因的。手機沒電這種事任何人都會發生。<br><br>
+                    凱恩的眼神讓我很有壓力。我決定今晚把三個鬧鐘都設起來。
+                  </div>
+                  <div class="diary-leo-footer">
+                    <span class="diary-leo-stamp">今日心情 ★★☆☆☆</span>
+                    <span class="diary-leo-mood">😔</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 席奧 -->
+            <div class="diary-person-panel" id="diary-theo">
+              <div class="diary-theo-wrap">
+                <div class="diary-theo-item">
+                  <div class="diary-theo-date">20XX · XX · XX</div>
+                  <div class="diary-theo-title">最後一頁</div>
+                  <div class="diary-theo-text">
+                    決定了。<br><br>
+                    不是一時衝動，是想了很久的事。有些路走到一半才發現方向不對，但要回頭也已經太遠了。<br><br>
+                    我沒有後悔，只是有一點，很小的一點，捨不得。
+                  </div>
+                </div>
+                <div class="diary-theo-item">
+                  <div class="diary-theo-date">20XX · XX · XX</div>
+                  <div class="diary-theo-title">無題</div>
+                  <div class="diary-theo-text">
+                    今天天氣不錯。<br><br>
+                    <span class="diary-theo-redact">████████████████████</span><br><br>
+                    沒什麼好說的。
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /diary-person-content -->
+        </div><!-- /diary-layout -->
+      </div><!-- /secret-diary -->
 
       <!-- 任務報告 -->
       <div class="secret-panel" id="secret-report">
@@ -615,8 +941,7 @@
             </div>
             <div class="report-title">代號「黑羽」</div>
             <div class="report-text">
-              任務地點：[已加密]。目標：高價值情報取得。執行人員：傑克、凱恩。
-              任務歷時 72 小時，目標達成，無人員損傷。詳細報告封存於 Level 4 文件庫。
+              任務地點：[已加密]。目標：高價值情報取得。執行人員：傑克、凱恩。任務歷時 72 小時，目標達成，無人員損傷。詳細報告封存於 Level 4 文件庫。
             </div>
           </div>
           <div class="report-item">
@@ -626,22 +951,33 @@
             </div>
             <div class="report-title">代號「靜夜」</div>
             <div class="report-text">
-              任務地點：[已加密]。目標：[已加密]。執行人員：[已加密]。
-              此任務相關所有資料均已列為最高機密，任何未授權的讀取行為將自動觸發系統警報。
+              任務地點：[已加密]。目標：[已加密]。執行人員：[已加密]。此任務相關所有資料均已列為最高機密，任何未授權的讀取行為將自動觸發系統警報。
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- /secret-report -->
 
-    </div>
+    </div><!-- /tab-secrets -->
 
-  </div>
+  </div><!-- /owl-main -->
 
   <footer class="owl-footer">
-    NIGHT OWL SQUADRON — CLASSIFIED DOCUMENT — ALL RIGHTS RESERVED
+    — CLASSIFIED DOCUMENT —
   </footer>
 
   <script>
+    const tagline = '// In darkness we move. In silence we strike.';
+    let charIndex = 0;
+    const tlEl = document.getElementById('tagline');
+    function typeOnce() {
+      if (charIndex < tagline.length) {
+        tlEl.textContent = tagline.slice(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeOnce, 54);
+      }
+    }
+    typeOnce();
+
     function switchTab(name, btn) {
       document.querySelectorAll('.owl-tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.owl-tab').forEach(el => el.classList.remove('active'));
@@ -672,6 +1008,13 @@
       document.querySelectorAll('.chat-session').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.chat-session-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('chat-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function switchDiaryPerson(name, btn) {
+      document.querySelectorAll('.diary-person-panel').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.diary-person-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('diary-' + name).classList.add('active');
       btn.classList.add('active');
     }
   </script>
