@@ -659,11 +659,15 @@
               <div class="chat-header-members">傑克 · 凱恩 · 里歐 · 席奧（4）</div>
             </div>
           </div>
+          <!-- 日期按鈕列：只放在這裡，一個日期一個 button -->
           <div class="chat-sessions">
             <button class="chat-session-btn active" onclick="switchChatSession('s1', this)">20XX.03.15</button>
             <button class="chat-session-btn" onclick="switchChatSession('s2', this)">20XX.07.22</button>
             <button class="chat-session-btn" onclick="switchChatSession('s3', this)">20XX.11.04</button>
-          </div>
+          <!-- 之後新增日期：複製上面一行，s3改成s4，日期改掉就好 -->
+        </div>
+
+    <!-- 訊息內容：一個日期對應一個 chat-session -->
           <div class="chat-body">
 
             <div class="chat-session active" id="chat-s1">
