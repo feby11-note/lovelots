@@ -41,7 +41,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: 3.75rem;           /* ← 3rem → 3.75rem */
+      height: 3.75rem;
       padding: 0 1.5rem;
       display: flex;
       align-items: center;
@@ -54,11 +54,11 @@
 
     .nav-brand {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 1rem;           /* ← 0.75rem → 1rem */
+      font-size: 1rem;
       color: var(--green-light);
       text-decoration: none;
       letter-spacing: 0.12em;
-      opacity: 0.85;
+      opacity: 0.9;
       transition: opacity 0.2s;
       white-space: nowrap;
     }
@@ -71,10 +71,11 @@
     }
 
     .nav-links a {
-      font-size: 0.95rem;        /* ← 0.85rem → 0.95rem */
-      color: var(--text-muted);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 1rem;
+      color: var(--text-dim);          /* ← muted → dim、更亮 */
       text-decoration: none;
-      padding: 0.4rem 0.75rem;   /* ← 살짝 padding 확장 */
+      padding: 0.4rem 0.75rem;
       border: 1px solid transparent;
       transition: all 0.2s;
       letter-spacing: 0.05em;
@@ -90,7 +91,7 @@
       width: 92%;
       max-width: 54rem;
       margin: 0 auto;
-      padding: 5.5rem 0 4rem;    /* ← 4.5rem → 5.5rem（配合 nav 變高） */
+      padding: 5.5rem 0 4rem;
     }
 
     /* ── 標題區 ── */
@@ -101,11 +102,11 @@
 
     .file-eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;              /* ← 0.72 → 0.75 */
       color: var(--orange);
       letter-spacing: 0.2em;
       margin-bottom: 0.6rem;
-      opacity: 0.8;
+      opacity: 0.9;                    /* ← 0.8 → 0.9 */
     }
 
     .file-header h1 {
@@ -120,8 +121,8 @@
 
     .file-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.8rem;               /* ← 0.78 → 0.8 */
+      color: var(--text-dim);          /* ← muted → dim */
       letter-spacing: 0.15em;
     }
 
@@ -135,12 +136,12 @@
     }
 
     .char-tab {
-      padding: 0.5rem 1.25rem 0.625rem;
+      padding: 0.55rem 1.25rem 0.625rem; /* ← 0.5 → 0.55 */
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.9rem;               /* ← 0.8 → 0.9 */
+      letter-spacing: 0.08em;          /* ← 0.12 → 0.08 */
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-dim);          /* ← muted → dim */
       background: none;
       border: none;
       cursor: pointer;
@@ -148,7 +149,7 @@
       clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
     }
 
-    .char-tab:hover { color: var(--text-dim); }
+    .char-tab:hover { color: var(--text); }
 
     .char-tab.active {
       color: var(--green-light);
@@ -162,6 +163,7 @@
       opacity: 1;
       margin-left: auto;
     }
+    .char-tab.tab-meet:hover { color: #ffc8d8; }
     .char-tab.tab-meet.active {
       color: #F4A7B9;
       background: var(--surface);
@@ -189,7 +191,7 @@
       border: 1px solid var(--border);
       background: var(--surface2);
       position: sticky;
-      top: 4.5rem;               /* ← nav 變高後 sticky 起點對應調整 */
+      top: 4.5rem;
     }
 
     .profile-img img {
@@ -217,22 +219,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.45rem 0.875rem;
+      padding: 0.5rem 0.875rem;        /* ← 0.45 → 0.5 */
       background: var(--surface2);
       border-bottom: 1px solid var(--border);
     }
 
     .pf-top-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.75rem;              /* ← 0.68 → 0.75 */
       letter-spacing: 0.2em;
       color: var(--orange);
-      opacity: 0.85;
+      opacity: 1;                      /* ← 0.85 → 1 */
     }
 
     .pf-top-status {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.68rem;              /* ← 0.6 → 0.68 */
       letter-spacing: 0.12em;
       color: var(--green-light);
       display: flex;
@@ -254,9 +256,10 @@
 
     .pf-block-title {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.72rem;              /* ← 0.65 → 0.72 */
       letter-spacing: 0.2em;
       color: var(--accent);
+      opacity: 1;                      /* 確保不被壓暗 */
       padding: 0.4rem 0.875rem;
       background: rgba(0,0,0,0.15);
       border-bottom: 1px solid rgba(74,98,128,0.35);
@@ -281,9 +284,9 @@
 
     .cell-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.68rem;              /* ← 0.62 → 0.68 */
       letter-spacing: 0.15em;
-      color: var(--text-muted);
+      color: rgba(238, 244, 255, 0.58); /* ← 42% → 58% */
       margin-bottom: 0.25rem;
     }
 
@@ -296,14 +299,14 @@
     .cell-val.orange {
       color: var(--orange);
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.95rem;
+      font-size: 1rem;                 /* ← 0.95 → 1 */
       letter-spacing: 0.08em;
     }
 
     .cell-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.7rem;               /* ← 0.65 → 0.7 */
+      color: rgba(238, 244, 255, 0.55); /* ← 42% → 55% */
       letter-spacing: 0.06em;
       margin-top: 0.1rem;
     }
@@ -311,7 +314,7 @@
     .pf-remark {
       padding: 0.75rem 0.875rem;
       font-size: 0.95rem;
-      color: var(--text-dim);
+      color: var(--text);              /* ← text-dim → text */
       line-height: 1.9;
     }
 
@@ -328,7 +331,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.12em;
       color: var(--orange);
-      opacity: 0.55;
+      opacity: 0.65;                   /* ← 0.55 → 0.65 */
     }
 
     .pf-stamp {
@@ -336,7 +339,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.08em;
       color: var(--green-light);
-      opacity: 0.65;
+      opacity: 0.8;                    /* ← 0.65 → 0.8 */
     }
 
     /* ══════════════════════════
@@ -383,10 +386,10 @@
 
     .meet-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.65rem;              /* ← 0.6 → 0.65 */
       letter-spacing: 0.18em;
       color: var(--orange);
-      opacity: 0.7;
+      opacity: 0.85;                   /* ← 0.7 → 0.85 */
     }
 
     .meet-quote {
@@ -434,7 +437,7 @@
 
     .gallery-section-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.72rem;              /* ← 0.7 → 0.72 */
       letter-spacing: 0.2em;
       color: var(--accent);
       padding-bottom: 0.5rem;
@@ -559,16 +562,16 @@
 
     .story-date {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;              /* ← 0.72 → 0.75 */
       color: var(--green-light);
       letter-spacing: 0.1em;
-      opacity: 0.8;
+      opacity: 0.9;                    /* ← 0.8 → 0.9 */
     }
 
     .story-tag {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.68rem;              /* ← 0.65 → 0.68 */
+      color: var(--text-dim);          /* ← muted → dim */
       letter-spacing: 0.08em;
       border: 1px solid var(--border);
       padding: 0.1rem 0.4rem;
@@ -649,19 +652,22 @@
     /* ── RWD ── */
     @media (max-width: 680px) {
       .nav {
-        height: 3.75rem;          /* ← 手機版稍微低一點避免擠 */
-        padding: 0 1.5rem;
+        height: 3.75rem;
+        padding: 0 1.25rem;
       }
       .nav-brand {
-        font-size: 1rem;      /* ← 手機版略縮，避免和連結擠 */
-        letter-spacing: 0.12em;
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links {
+        gap: 0;
       }
       .nav-links a {
-        font-size: 0.95rem;      /* ← 手機版比預設小一點點，但比原本大 */
-        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
       }
       .main {
-        padding-top: 5.5rem;       /* ← 對應手機 nav 高度 */
+        padding-top: 5.5rem;
       }
       .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
@@ -671,15 +677,23 @@
       }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
+      /* 手機文字補強 */
+      .char-tab {
+        font-size: 0.82rem;
+        padding: 0.5rem 0.875rem 0.625rem;
+      }
+      .cell-label { font-size: 0.7rem; }
+      .pf-block-title { font-size: 0.75rem; }
     }
 
     @media (max-width: 420px) {
       .nav-brand {
-        font-size: 0.85rem;      /* ← 很窄的手機再縮一點 */
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
       }
       .nav-links a {
-        font-size: 0.78rem;
-        padding: 0.3rem 0.4rem;
+        font-size: 0.82rem;
+        padding: 0.35rem 0.45rem;
       }
       .pf-grid.col2,
       .pf-grid.col3 { grid-template-columns: 1fr; }
@@ -911,7 +925,7 @@
       <div class="stories-panel">
         <div class="story-list">
 
-          <a href="../Night-Owl-Unit/stories/leo.html#before-surviving" class="story-item">
+          <a href="stories/leo-stories.html#before-surviving" class="story-item">
             <div class="story-meta">
               <span class="story-date">BEFORE THE UNIT</span>
               <span class="story-tag">CH.1</span>
@@ -920,7 +934,7 @@
             <div class="story-preview">我從來沒有以為世界應該是安靜的。有意識以來，耳邊沒有搖籃曲……</div>
           </a>
 
-          <a href="../Night-Owl-Unit/stories/leo.html#survive" class="story-item">
+          <a href="stories/leo-stories.html#survive" class="story-item">
             <div class="story-meta">
               <span class="story-date">BEFORE THE UNIT</span>
               <span class="story-tag">CH.2</span>
@@ -929,7 +943,7 @@
             <div class="story-preview">在那之後，事情變得很簡單，有人把我帶走，沒有解釋、也沒有選擇……</div>
           </a>
 
-          <a href="../Night-Owl-Unit/stories/leo.html#just-adapting" class="story-item">
+          <a href="stories/leo-stories.html#just-adapting" class="story-item">
             <div class="story-meta">
               <span class="story-date">BEFORE THE UNIT</span>
               <span class="story-tag">CH.3</span>
@@ -938,7 +952,7 @@
             <div class="story-preview">從那之後，我不再等。我在別人還沒動之前就先動……</div>
           </a>
 
-          <a href="../Night-Owl-Unit/stories/leo.html#edge-of-thrill" class="story-item">
+          <a href="stories/leo-stories.html#edge-of-thrill" class="story-item">
             <div class="story-meta">
               <span class="story-date">BEFORE THE UNIT</span>
               <span class="story-tag">CH.4</span>
@@ -947,7 +961,7 @@
             <div class="story-preview">不知道從什麼時候開始，活著這件事變得太簡單了……</div>
           </a>
 
-          <a href="../Night-Owl-Unit/stories/leo.html#rainy-night" class="story-item">
+          <a href="stories/leo-stories.html#rainy-night" class="story-item">
             <div class="story-meta">
               <span class="story-date">BEFORE THE UNIT</span>
               <span class="story-tag">CH.5</span>
