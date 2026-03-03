@@ -5,7 +5,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --owl-bg: #1E2D40;          /* 稍微提亮，不再純黑 */
+  --owl-bg: #1E2D40;
   --owl-surface: #273D57;
   --owl-surface2: #304A6A;
   --owl-border: #4A6280;
@@ -14,22 +14,71 @@
   --owl-green-glow: rgba(94, 196, 78, 0.25);
   --owl-orange: #F0A840;
   --owl-orange-glow: rgba(240, 168, 64, 0.2);
-  --owl-accent: #7BC8E8;       /* 新增：冰藍強調色 */
+  --owl-accent: #7BC8E8;
   --owl-text: #EEF4FF;
   --owl-text-dim: rgba(238, 244, 255, 0.78);
   --owl-text-muted: rgba(238, 244, 255, 0.42);
 
-  /* 字體縮放基準 */
   font-size: clamp(14px, 1.1vw + 10px, 17px);
 }
 
 body.owl-page {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
   background: var(--owl-bg);
   color: var(--owl-text);
   min-height: 100vh;
   width: 100%;
   font-size: 1rem;
+}
+
+/* 字體 fallback 補強 */
+.owl-header-zh {
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+.owl-header-en,
+.owl-member-name,
+.owl-section-en,
+.owl-floor-name,
+.diary-kane-title {
+  font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
+}
+
+.owl-header-tagline,
+.owl-badge,
+.owl-nav-brand,
+.owl-data-label,
+.owl-timeline-year,
+.owl-floor-tag,
+.owl-section-id,
+.owl-member-rank,
+.owl-member-tag,
+.chat-sender,
+.chat-time,
+.chat-date-divider,
+.chat-header-members,
+.chat-session-btn,
+.diary-kane-date,
+.diary-kane-id,
+.diary-kane-header-title,
+.diary-kane-header-stamp,
+.diary-leo-date,
+.diary-leo-topbar-text,
+.diary-leo-stamp,
+.diary-theo-date,
+.report-code,
+.report-status,
+.owl-hamburger-label,
+.secret-tab-btn {
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+}
+
+.diary-jack-wrap,
+.diary-jack-title,
+.diary-jack-text,
+.diary-jack-date,
+.diary-jack-doodle {
+  font-family: 'Caveat', cursive;
 }
 
 /* ===== 導覽列 ===== */
