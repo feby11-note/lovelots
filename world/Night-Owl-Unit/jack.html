@@ -26,7 +26,7 @@
       --text: #EEF4FF;
       --text-dim: rgba(238, 244, 255, 0.78);
       --text-muted: rgba(238, 244, 255, 0.42);
-      font-size: clamp(13px, 1vw + 10px, 16px);
+      font-size: clamp(15px, 1.1vw + 11px, 18px);
     }
 
     body {
@@ -70,7 +70,7 @@
     }
 
     .nav-links a {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       text-decoration: none;
       padding: 0.35rem 0.7rem;
@@ -86,9 +86,10 @@
 
     /* ── 主容器：跟著螢幕放大 ── */
     .main {
-    width: min(860px, 92vw);   /* 改這行，螢幕大時撐到860px，小時留邊 */
+    width: 92%;
+    max-width: 54rem;
     margin: 0 auto;
-    padding: 4.5rem 0 4rem;    /* 左右padding拿掉，用width控制 */
+    padding: 4.5rem 0 4rem;
     }
 
     /* ── 返回 ── */
@@ -112,7 +113,7 @@
 
     .file-eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       color: var(--orange);
       letter-spacing: 0.2em;
       margin-bottom: 0.6rem;
@@ -131,7 +132,7 @@
 
     .file-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       letter-spacing: 0.15em;
     }
@@ -148,7 +149,7 @@
     .char-tab {
       padding: 0.5rem 1.25rem 0.625rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -230,7 +231,7 @@
 
     .pf-top-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.68rem;
       letter-spacing: 0.2em;
       color: var(--orange);
       opacity: 0.85;
@@ -261,7 +262,7 @@
 
     .pf-block-title {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
       color: var(--accent);
       padding: 0.4rem 0.875rem;
@@ -294,14 +295,14 @@
 
     .cell-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem;
+      font-size: 0.62rem;
       letter-spacing: 0.15em;
       color: var(--text-muted);
       margin-bottom: 0.25rem;
     }
 
     .cell-val {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text);
       line-height: 1.5;
     }
@@ -309,13 +310,13 @@
     .cell-val.orange {
       color: var(--orange);
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       letter-spacing: 0.08em;
     }
 
     .cell-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       letter-spacing: 0.06em;
       margin-top: 0.1rem;
@@ -324,7 +325,7 @@
     /* 備註 */
     .pf-remark {
       padding: 0.75rem 0.875rem;
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       color: var(--text-dim);
       line-height: 1.9;
     }
@@ -340,7 +341,7 @@
 
     .pf-classify {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem;
+      font-size: 0.62rem;
       letter-spacing: 0.12em;
       color: var(--orange);
       opacity: 0.55;
@@ -348,7 +349,7 @@
 
     .pf-stamp {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.68rem;
       letter-spacing: 0.08em;
       color: var(--green-light);
       opacity: 0.65;
@@ -361,7 +362,7 @@
 
 .gallery-section-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   letter-spacing: 0.2em;
   color: var(--accent);
   padding-bottom: 0.5rem;
@@ -465,7 +466,7 @@
 .gallery-placeholder-icon { font-size: 1.5rem; }
 .gallery-placeholder-text {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.55rem;
+  font-size: 0.62rem;
   letter-spacing: 0.1em;
 }
 
@@ -512,7 +513,7 @@
 
     .story-date {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       color: var(--green-light);
       letter-spacing: 0.1em;
       opacity: 0.8;
@@ -520,7 +521,7 @@
 
     .story-tag {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       letter-spacing: 0.08em;
       border: 1px solid var(--border);
@@ -528,7 +529,7 @@
     }
 
     .story-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 0.4rem;
@@ -536,7 +537,7 @@
     }
 
     .story-preview {
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       color: var(--text-dim);
       line-height: 1.8;
     }
@@ -548,7 +549,7 @@
       margin-top: 3rem;
       border-top: 1px solid var(--border);
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.7rem;
       letter-spacing: 0.12em;
       color: var(--text-muted);
     }
@@ -592,11 +593,9 @@
 
   <div class="main">
 
-    <a href="index.html" class="back">← BACK TO UNIT</a>
-
     <!-- 標題 -->
     <div class="file-header">
-      <div class="file-eyebrow">PERSONNEL FILE · #OWL-001</div>
+      <div class="file-eyebrow">PERSONNEL FILE · #NOU-001</div>
       <h1>JACK WILSON</h1>
       <div class="file-sub">CODENAME: WOLF ｜ RANK: CAPTAIN ｜ STATUS: ACTIVE</div>
     </div>
@@ -644,7 +643,7 @@
                 </div>
                 <div class="pf-cell">
                   <div class="cell-label">FILE NO.</div>
-                  <div class="cell-val">#OWL-001</div>
+                  <div class="cell-val">#NOU-001</div>
                 </div>
               </div>
             </div>
@@ -680,23 +679,23 @@
               <div class="pf-grid col4">
                 <div class="pf-cell slim">
                   <div class="cell-label">AGE</div>
-                  <div class="cell-val">——</div>
+                  <div class="cell-val">34</div>
+                </div>
+                <div class="pf-cell slim">
+                  <div class="cell-label">BIRTHDATE</div>
+                  <div class="cell-val">11 / 10</div>
                 </div>
                 <div class="pf-cell slim">
                   <div class="cell-label">HEIGHT</div>
-                  <div class="cell-val">—— cm</div>
+                  <div class="cell-val">192 cm</div>
                 </div>
                 <div class="pf-cell slim">
                   <div class="cell-label">WEIGHT</div>
-                  <div class="cell-val">—— kg</div>
-                </div>
-                <div class="pf-cell slim">
-                  <div class="cell-label">BLOOD TYPE</div>
-                  <div class="cell-val">——</div>
+                  <div class="cell-val">90 kg</div>
                 </div>
                 <div class="pf-cell full">
                   <div class="cell-label">APPEARANCE</div>
-                  <div class="cell-val">（描述外貌特徵）</div>
+                  <div class="cell-val">棕髮、琥珀色瞳孔、左胸狼型刺青、小麥膚色、肌肉發達</div>
                 </div>
               </div>
             </div>
@@ -707,19 +706,19 @@
               <div class="pf-grid col2">
                 <div class="pf-cell">
                   <div class="cell-label">SPECIALTY</div>
-                  <div class="cell-val">（擅長）</div>
+                  <div class="cell-val">CQB、行動決策、戰術調度</div>
                 </div>
                 <div class="pf-cell">
                   <div class="cell-label">INTERESTS</div>
-                  <div class="cell-val">（興趣）</div>
+                  <div class="cell-val">收藏槍枝；泡酒吧；園藝</div>
                 </div>
                 <div class="pf-cell">
                   <div class="cell-label">DISLIKES</div>
-                  <div class="cell-val">（討厭）</div>
+                  <div class="cell-val">背叛</div>
                 </div>
                 <div class="pf-cell">
                   <div class="cell-label">ORIGIN</div>
-                  <div class="cell-val">（出身地）</div>
+                  <div class="cell-val">U.S.A.</div>
                 </div>
               </div>
             </div>
@@ -728,7 +727,12 @@
             <div class="pf-block">
               <div class="pf-block-title">REMARKS</div>
               <div class="pf-remark">
-                （趣事、八卦、或補充說明。）
+                - 任務時是最可靠的存在<p>
+                - 私底下個性輕浮懶散、酒煙不離身、愛跟女人調情<p>
+                - 喜歡低調高性能的車大於高級跑車，如悍馬 SUV <p>
+                - 有一系列老槍收藏，最喜歡的是二戰德國毛瑟狙擊步槍，取名叫「葛麗特Gretel」<p>
+                - 擅長武器類型：突擊步槍、戰術手槍、霰彈槍<p>
+                - 執著、佔有慾強、情感似乎有點觀極端
               </div>
             </div>
 
