@@ -972,6 +972,12 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
+
+    // 頁面載入後嘗試播放所有縮圖影片
+    document.querySelectorAll('.gallery-video-item video').forEach(v => {
+    v.play().catch(() => {}); // 失敗就靜默，不報錯
+    });
+
   </script>
 
 </body>
