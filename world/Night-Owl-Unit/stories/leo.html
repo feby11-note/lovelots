@@ -309,6 +309,39 @@
       color: var(--text-muted);
     }
 
+    /* ── 回頂端按鈕 ── */
+.back-to-top {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.25rem;
+  z-index: 200;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, background 0.2s, color 0.2s;
+  clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--surface);
+  color: var(--green-light);
+  border-color: var(--green-light);
+}
+
     /* ── RWD ── */
     @media (max-width: 680px) {
       .nav {
@@ -588,5 +621,13 @@
     NIGHT OWL UNIT — PERSONNEL FILE — CLASSIFIED
   </footer>
 
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂端">↑</button>
+<script>
+  // 回頂端按鈕：捲超過 300px 才出現
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 300);
+});
+</script>
 </body>
 </html>
