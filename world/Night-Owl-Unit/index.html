@@ -18,6 +18,9 @@
     </button>
   </nav>
 
+  <!-- 回頂端按鈕 -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂端">↑</button>
+
   <div class="owl-hamburger-menu" id="owlMenu">
     <div class="owl-hamburger-overlay" onclick="toggleMenu()"></div>
     <div class="owl-hamburger-content">
@@ -626,6 +629,69 @@
         </a>
       </div>
 
+    <div class="owl-divider"></div>
+
+    <div class="owl-section-head">
+      <div class="owl-section-left">
+        <div class="owl-section-en">Related Personnel</div>
+        <div class="owl-section-zh">相關人員</div>
+      </div>
+      <div class="owl-section-id">DOC-NOW-004-B</div>
+    </div> 
+
+    <p class="owl-text">任務期間接觸過的相關人員，非部隊正式編制。</p>
+
+    <div class="owl-npc-grid">
+
+      <div class="owl-npc-card">
+        <div class="owl-npc-img">
+          <div class="img-placeholder">👤</div>
+          <!-- 有圖時換成：<img src="..." alt=""> -->
+        </div>
+        <div class="owl-npc-info">
+          <div class="owl-npc-tag">CIVILIAN</div>
+          <div class="owl-npc-name">人物名稱</div>
+          <div class="owl-npc-desc">與部隊的關係或簡短說明。</div>
+        </div>
+      </div>
+      <div class="owl-npc-card">
+        <div class="owl-npc-img">
+          <div class="img-placeholder">👤</div>
+          <!-- 有圖時換成：<img src="..." alt=""> -->
+        </div>
+        <div class="owl-npc-info">
+          <div class="owl-npc-tag">CIVILIAN</div>
+          <div class="owl-npc-name">人物名稱</div>
+          <div class="owl-npc-desc">與部隊的關係或簡短說明。</div>
+        </div>
+      </div>
+      <div class="owl-npc-card">
+        <div class="owl-npc-img">
+          <div class="img-placeholder">👤</div>
+          <!-- 有圖時換成：<img src="..." alt=""> -->
+        </div>
+        <div class="owl-npc-info">
+          <div class="owl-npc-tag">CIVILIAN</div>
+          <div class="owl-npc-name">人物名稱</div>
+          <div class="owl-npc-desc">與部隊的關係或簡短說明。</div>
+        </div>
+      </div>
+      <div class="owl-npc-card">
+        <div class="owl-npc-img">
+          <div class="img-placeholder">👤</div>
+          <!-- 有圖時換成：<img src="..." alt=""> -->
+        </div>
+        <div class="owl-npc-info">
+          <div class="owl-npc-tag">CIVILIAN</div>
+          <div class="owl-npc-name">人物名稱</div>
+          <div class="owl-npc-desc">與部隊的關係或簡短說明。</div>
+        </div>
+      </div>
+
+  <!-- 複製上面一個 owl-npc-card 新增更多 -->
+
+</div>
+
     </div><!-- /tab-members -->
 
     <!-- ⑤ 秘聞 -->
@@ -1202,6 +1268,13 @@
   </footer>
 
   <script>
+
+    /* ── 回頂端按鈕 ── */
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    });
+
     // 如果網址有 #members，自動切到 部隊成員 標籤
     if (window.location.hash === '#members') {
     const btn = document.querySelector('[onclick*="members"]');
