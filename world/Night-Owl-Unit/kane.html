@@ -9,7 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
-  <title>凱恩 — 夜梟部隊</title>
+  <title>凱恩｜夜梟部隊</title>
+
+  <meta property="og:title" content="凱恩｜by菲比">
+  <meta property="og:description" content="沉穩、冷靜、永遠站在最前線替所有人善後的男人。">
+  <meta property="og:image" content="https://feby11-note.github.io/somewhere/pic/characters/kane/1.jpeg">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/world/Night-Owl-Unit/kane.html">
+  <meta property="og:type" content="website">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,8 +47,8 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: 3rem;
-      padding: 0 2rem;
+      height: 3.75rem;
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,26 +60,28 @@
 
     .nav-brand {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 1rem;
       color: var(--green-light);
       text-decoration: none;
-      letter-spacing: 0.15em;
-      opacity: 0.85;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
     .nav-brand:hover { opacity: 1; }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }
 
     .nav-links a {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 1rem;
+      color: var(--text-dim);
       text-decoration: none;
-      padding: 0.35rem 0.7rem;
+      padding: 0.4rem 0.75rem;
       border: 1px solid transparent;
       transition: all 0.2s;
       letter-spacing: 0.05em;
@@ -84,26 +92,13 @@
       border-color: rgba(94, 196, 78, 0.4);
     }
 
-    /* ── 主容器：跟著螢幕放大 ── */
+    /* ── 主容器 ── */
     .main {
-    width: 92%;
-    max-width: 54rem;
-    margin: 0 auto;
-    padding: 4.5rem 0 4rem;
+      width: 92%;
+      max-width: 54rem;
+      margin: 0 auto;
+      padding: 5.5rem 0 4rem;
     }
-
-    /* ── 返回 ── */
-    .back {
-      display: inline-block;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      margin-bottom: 2rem;
-      transition: color 0.2s;
-    }
-    .back:hover { color: var(--green-light); }
 
     /* ── 標題區 ── */
     .file-header {
@@ -113,11 +108,11 @@
 
     .file-eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--orange);
       letter-spacing: 0.2em;
       margin-bottom: 0.6rem;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .file-header h1 {
@@ -132,8 +127,8 @@
 
     .file-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      color: var(--text-dim);
       letter-spacing: 0.15em;
     }
 
@@ -147,12 +142,12 @@
     }
 
     .char-tab {
-      padding: 0.5rem 1.25rem 0.625rem;
+      padding: 0.55rem 1.25rem 0.625rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-dim);
       background: none;
       border: none;
       cursor: pointer;
@@ -160,7 +155,7 @@
       clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
     }
 
-    .char-tab:hover { color: var(--text-dim); }
+    .char-tab:hover { color: var(--text); }
 
     .char-tab.active {
       color: var(--green-light);
@@ -169,17 +164,59 @@
       padding-bottom: calc(0.625rem + 2px);
     }
 
+    .char-tab.tab-meet {
+      color: #F4A7B9;
+      opacity: 1;
+      margin-left: auto;
+    }
+    .char-tab.tab-meet:hover { color: #ffc8d8; }
+    .char-tab.tab-meet.active {
+      color: #F4A7B9;
+      background: var(--surface);
+      border-bottom-color: #F4A7B9;
+    }
+
     .char-panel { display: none; }
     .char-panel.active { display: block; }
+
+    /* ── 回頂端按鈕 ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.25rem;
+      z-index: 200;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, background 0.2s, color 0.2s;
+      clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--surface);
+      color: var(--green-light);
+      border-color: var(--green-light);
+    }
 
     /* ══════════════════════════
        FILE 面板
     ══════════════════════════ */
-    .file-panel {
-      padding-top: 2rem;
-    }
+    .file-panel { padding-top: 2rem; }
 
-    /* 主視覺 + 資料並排 */
     .profile-layout {
       display: grid;
       grid-template-columns: 260px 1fr;
@@ -187,14 +224,13 @@
       align-items: start;
     }
 
-    /* 角色圖 */
     .profile-img {
       width: 100%;
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--surface2);
       position: sticky;
-      top: 4rem;
+      top: 4.5rem;
     }
 
     .profile-img img {
@@ -212,34 +248,32 @@
       color: rgba(255,255,255,0.07);
     }
 
-    /* 軍方檔案表格 */
     .profile-file {
       border: 1px solid var(--border);
       background: var(--surface);
       overflow: hidden;
     }
 
-    /* 頂部列 */
     .pf-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.45rem 0.875rem;
+      padding: 0.5rem 0.875rem;
       background: var(--surface2);
       border-bottom: 1px solid var(--border);
     }
 
     .pf-top-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       letter-spacing: 0.2em;
       color: var(--orange);
-      opacity: 0.85;
+      opacity: 1;
     }
 
     .pf-top-status {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.68rem;
       letter-spacing: 0.12em;
       color: var(--green-light);
       display: flex;
@@ -256,24 +290,21 @@
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    /* 區塊 */
     .pf-block { border-bottom: 1px solid var(--border); }
     .pf-block:last-of-type { border-bottom: none; }
 
     .pf-block-title {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       letter-spacing: 0.2em;
       color: var(--accent);
+      opacity: 1;
       padding: 0.4rem 0.875rem;
       background: rgba(0,0,0,0.15);
       border-bottom: 1px solid rgba(74,98,128,0.35);
     }
 
-    /* 格子 */
-    .pf-grid {
-      display: grid;
-    }
+    .pf-grid { display: grid; }
     .pf-grid.col2 { grid-template-columns: 1fr 1fr; }
     .pf-grid.col3 { grid-template-columns: 1fr 1fr 1fr; }
     .pf-grid.col4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
@@ -288,16 +319,13 @@
     .pf-cell.span3 { grid-column: span 3; }
     .pf-cell.span4 { grid-column: span 4; }
     .pf-cell.slim { padding: 0.45rem 0.875rem; }
-    .pf-cell.full {
-      grid-column: 1 / -1;
-      border-right: none;
-    }
+    .pf-cell.full { grid-column: 1 / -1; border-right: none; }
 
     .cell-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       letter-spacing: 0.15em;
-      color: var(--text-muted);
+      color: rgba(238, 244, 255, 0.58);
       margin-bottom: 0.25rem;
     }
 
@@ -310,27 +338,25 @@
     .cell-val.orange {
       color: var(--orange);
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.95rem;
+      font-size: 1rem;
       letter-spacing: 0.08em;
     }
 
     .cell-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.7rem;
+      color: rgba(238, 244, 255, 0.55);
       letter-spacing: 0.06em;
       margin-top: 0.1rem;
     }
 
-    /* 備註 */
     .pf-remark {
       padding: 0.75rem 0.875rem;
       font-size: 0.95rem;
-      color: var(--text-dim);
+      color: var(--text);
       line-height: 1.9;
     }
 
-    /* 底部 */
     .pf-bottom {
       display: flex;
       align-items: center;
@@ -344,7 +370,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.12em;
       color: var(--orange);
-      opacity: 0.55;
+      opacity: 0.65;
     }
 
     .pf-stamp {
@@ -352,146 +378,206 @@
       font-size: 0.68rem;
       letter-spacing: 0.08em;
       color: var(--green-light);
-      opacity: 0.65;
+      opacity: 0.8;
     }
-
-    /* ── Gallery ── */
-.gallery-panel {
-  padding-top: 2rem;
-}
-
-.gallery-section-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.875rem;
-  border-bottom: 1px solid rgba(74,98,128,0.35);
-}
-
-.gallery-section {
-  margin-bottom: 2rem;
-}
-
-/* 照片格：3欄，9:16或3:4直向 */
-.gallery-grid-photo {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.625rem;
-}
-
-.gallery-photo-item {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  cursor: pointer;
-  position: relative;
-  transition: border-color 0.2s;
-}
-.gallery-photo-item:hover { border-color: var(--green); }
-
-.gallery-photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s;
-}
-.gallery-photo-item:hover img { transform: scale(1.04); }
-
-/* 影片格：2欄，9:16直向 */
-.gallery-grid-video {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.625rem;
-}
-
-.gallery-video-item {
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  position: relative;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-.gallery-video-item:hover { border-color: var(--green); }
-
-.gallery-video-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* gif 跟照片一樣用 photo-item 就好 */
-
-/* 影片播放icon覆蓋 */
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.3);
-  transition: background 0.2s;
-}
-.gallery-video-item:hover .video-overlay {
-  background: rgba(0,0,0,0.15);
-}
-.video-play-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 2px solid rgba(255,255,255,0.7);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.9);
-}
-
-/* placeholder格子 */
-.gallery-placeholder {
-  width: 100%; height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  color: rgba(255,255,255,0.12);
-}
-.gallery-placeholder-icon { font-size: 1.5rem; }
-.gallery-placeholder-text {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-}
-
-/* ── RWD gallery ── */
-@media (max-width: 600px) {
-  .gallery-grid-photo { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid-video { grid-template-columns: 1fr; }
-}
 
     /* ══════════════════════════
-       他的過去 面板
+       MEET HIM 面板
     ══════════════════════════ */
-    .stories-panel {
+    .meet-panel {
       padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .story-empty {
+    .meet-img,
+    .meet-card {
+      width: 100%;
+      max-width: 260px;
+    }
+
+    .meet-img {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-bottom: none;
+    }
+
+    .meet-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .meet-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .meet-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+      opacity: 0.85;
+    }
+
+    .meet-quote {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.9;
+    }
+
+    .meet-divider {
+      width: 2rem;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .meet-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--green-light);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px);
+    }
+
+    .meet-btn:hover {
+      background: #c5f5b0;
+      transform: translateY(-1px);
+    }
+
+    .meet-btn-arrow { transition: transform 0.2s; }
+    .meet-btn:hover .meet-btn-arrow { transform: translateX(3px); }
+
+    /* ══════════════════════════
+       GALLERY 面板
+    ══════════════════════════ */
+    .gallery-panel { padding-top: 2rem; }
+
+    .gallery-section-label {
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      padding: 3rem 0;
-      text-align: center;
-      border: 1px dashed rgba(74,98,128,0.4);
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.875rem;
+      border-bottom: 1px solid rgba(74,98,128,0.35);
     }
+
+    .gallery-section { margin-bottom: 2rem; }
+
+    .gallery-scroll {
+      display: flex;
+      gap: 0.625rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.75rem;
+      cursor: grab;
+    }
+    .gallery-scroll:active { cursor: grabbing; }
+
+    .gallery-scroll::-webkit-scrollbar { height: 3px; }
+    .gallery-scroll::-webkit-scrollbar-track { background: transparent; }
+    .gallery-scroll::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .gallery-photo-item,
+    .gallery-video-item {
+      flex: 0 0 auto;
+      width: clamp(9rem, 60vw, 16rem);
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      scroll-snap-align: start;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .gallery-photo-item:hover,
+    .gallery-video-item:hover { border-color: var(--green); }
+
+    .gallery-photo-item img,
+    .gallery-video-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .gallery-photo-item:hover img,
+    .gallery-video-item:hover img { transform: scale(1.04); }
+
+    .gallery-video-item video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+    .gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
+
+    .video-play-icon {
+      width: 2.5rem; height: 2.5rem;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.12);
+    }
+    .gallery-placeholder-icon { font-size: 1.5rem; }
+    .gallery-placeholder-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ══════════════════════════
+       HIS PAST 面板
+    ══════════════════════════ */
+    .stories-panel { padding-top: 2rem; }
 
     .story-list { display: flex; flex-direction: column; }
 
@@ -499,6 +585,8 @@
       padding: 1.25rem 0;
       border-bottom: 1px solid rgba(74,98,128,0.3);
       cursor: pointer;
+      text-decoration: none;
+      display: block;
       transition: opacity 0.2s;
     }
     .story-item:last-child { border-bottom: none; }
@@ -513,16 +601,16 @@
 
     .story-date {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--green-light);
       letter-spacing: 0.1em;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .story-tag {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.68rem;
+      color: var(--text-dim);
       letter-spacing: 0.08em;
       border: 1px solid var(--border);
       padding: 0.1rem 0.4rem;
@@ -542,6 +630,52 @@
       line-height: 1.8;
     }
 
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-inner img,
+    .lightbox-inner video {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.25rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.7);
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 1000;
+    }
+    .lightbox-close:hover { color: #fff; }
+
     /* ── Footer ── */
     .footer {
       text-align: center;
@@ -556,9 +690,21 @@
 
     /* ── RWD ── */
     @media (max-width: 680px) {
-      .profile-layout {
-        grid-template-columns: 1fr;
+      .nav {
+        height: 3.75rem;
+        padding: 0 1.25rem;
       }
+      .nav-brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links { gap: 0; }
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      .main { padding-top: 5.5rem; }
+      .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
         position: static;
         max-width: 260px;
@@ -566,11 +712,23 @@
       }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav-links { display: none; }
+      .char-tab {
+        font-size: 0.82rem;
+        padding: 0.5rem 0.875rem 0.625rem;
+      }
+      .cell-label { font-size: 0.7rem; }
+      .pf-block-title { font-size: 0.75rem; }
     }
 
     @media (max-width: 420px) {
+      .nav-brand {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+      }
+      .nav-links a {
+        font-size: 0.82rem;
+        padding: 0.35rem 0.45rem;
+      }
       .pf-grid.col2,
       .pf-grid.col3 { grid-template-columns: 1fr; }
       .pf-cell.span2,
@@ -591,6 +749,8 @@
     </ul>
   </nav>
 
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂端">↑</button>
+
   <div class="main">
 
     <!-- 標題 -->
@@ -605,6 +765,7 @@
       <button class="char-tab active" onclick="switchCharTab('file', this)">FILE</button>
       <button class="char-tab" onclick="switchCharTab('gallery', this)">GALLERY</button>
       <button class="char-tab" onclick="switchCharTab('stories', this)">HIS PAST</button>
+      <button class="char-tab tab-meet" onclick="switchCharTab('meet', this)">MEET HIM</button>
     </div>
 
     <!-- ① FILE -->
@@ -615,7 +776,6 @@
           <!-- 左：角色圖 -->
           <div class="profile-img">
             <img src="../../pic/characters/kane/1.jpeg" alt="凱恩">
-            <!-- 沒圖時換成：<div class="placeholder">👤</div> -->
           </div>
 
           <!-- 右：軍方檔案 -->
@@ -727,12 +887,12 @@
             <div class="pf-block">
               <div class="pf-block-title">REMARKS</div>
               <div class="pf-remark">
-                - 智商極高，擅長分析和規劃，是傑克最信任的副手<p>
-                - 責任感重，對自己要求苛刻<p>
-                - 正經八百的個性讓他比傑克更像隊長<p>
-                - 說話淡淡的，但偶爾喜歡說冷笑話<p>
-                - 不抽煙，只喜歡昂貴的威士忌和紅酒<p>
-                - 有一位交往多年的前女友<p>
+                - 智商極高，擅長分析和規劃，是傑克最信任的副手<br>
+                - 責任感重，對自己要求苛刻<br>
+                - 正經八百的個性讓他比傑克更像隊長<br>
+                - 說話淡淡的，但偶爾喜歡說冷笑話<br>
+                - 不抽煙，只喜歡昂貴的威士忌和紅酒<br>
+                - 有一位交往多年的前女友<br>
                 - 似乎非常會忍耐(?)
               </div>
             </div>
@@ -748,106 +908,162 @@
       </div>
     </div><!-- /char-file -->
 
-    <!-- ② GALLERY -->
+<!-- ② GALLERY -->
 <div class="char-panel" id="char-gallery">
   <div class="gallery-panel">
 
-    <!-- 照片區 -->
     <div class="gallery-section">
       <div class="gallery-section-label">PHOTO ARCHIVE</div>
-      <div class="gallery-grid-photo">
+      <div class="gallery-scroll">
 
-        <!-- 有照片時這樣放： -->
-        <!-- <div class="gallery-photo-item"><img src="../../pic/characters/jack/2.jpeg" alt=""></div> -->
+        <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/kane/2.jpeg', 'img')">
+          <img src="../../pic/characters/kane/2.jpeg" alt="">
+        </div>
 
-        <!-- 沒照片時放placeholder -->
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
+        <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/kane/3.jpeg', 'img')">
+          <img src="../../pic/characters/kane/3.jpeg" alt="">
         </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
+
+        <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/kane/5.jpeg', 'img')">
+          <img src="../../pic/characters/kane/5.jpeg" alt="">
         </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
+
+        <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/kane/6.jpeg', 'img')">
+          <img src="../../pic/characters/kane/6.jpeg" alt="">
+        </div>
+
+        <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/kane/7.jpeg', 'img')">
+          <img src="../../pic/characters/kane/7.jpeg" alt="">
+        </div>
+
+        <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/kane/8.jpeg', 'img')">
+          <img src="../../pic/characters/kane/8.jpeg" alt="">
         </div>
 
       </div>
     </div>
 
-    <!-- 影片／GIF 區 -->
     <div class="gallery-section">
       <div class="gallery-section-label">VIDEO & GIF</div>
-      <div class="gallery-grid-video">
+      <div class="gallery-scroll">
 
-        <!-- 有影片時這樣放： -->
-        <!--
         <div class="gallery-video-item">
-          <video src="../../pic/characters/jack/clip1.mp4" loop muted playsinline></video>
-          <div class="video-overlay">
-            <div class="video-play-icon">▶</div>
-          </div>
+          <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/kane/1.mp4', 'video')">
+              <video src="../../pic/characters/kane/1.mp4" loop muted playsinline></video>
+              <div class="video-overlay"><div class="video-play-icon">▶</div></div>
+            </div>
         </div>
-        -->
 
-        <!-- 有GIF時用photo-item就好： -->
-        <!--
-        <div class="gallery-photo-item">
-          <img src="../../pic/characters/jack/anim.gif" alt="">
+        <div class="gallery-video-item">
+          <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/kane/2.mp4', 'video')">
+              <video src="../../pic/characters/kane/2.mp4" loop muted playsinline></video>
+              <div class="video-overlay"><div class="video-play-icon">▶</div></div>
+            </div>
         </div>
-        -->
 
-        <!-- 沒影片時 -->
         <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
-          </div>
-        </div>
-        <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
-          </div>
+          <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/kane/3.mp4', 'video')">
+              <video src="../../pic/characters/kane/3.mp4" loop muted playsinline></video>
+              <div class="video-overlay"><div class="video-play-icon">▶</div></div>
+            </div>
         </div>
 
       </div>
     </div>
 
   </div>
-</div>
+</div><!-- /char-gallery -->
 
     <!-- ③ HIS PAST -->
-<div class="char-panel" id="char-stories">
-  <div class="stories-panel">
-    <div class="story-list">
+    <div class="char-panel" id="char-stories">
+      <div class="stories-panel">
+        <div class="story-list">
 
-      <a href="../../world/stories/jack-01.html" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">20XX · XX · XX</span>
-          <span class="story-tag">BEFORE THE UNIT</span>
+          <a href="stories/kane-stories.html#perfectionist" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.1</span>
+            </div>
+            <div class="story-title">完美主義者的誕生</div>
+            <div class="story-preview">從小他就知道，犯錯的代價不只是懲罰，而是某種他說不清楚的羞恥感……</div>
+          </a>
+
+          <a href="stories/kane-stories.html#med-school" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.2</span>
+            </div>
+            <div class="story-title">醫學院的那幾年</div>
+            <div class="story-preview">他以最高分進入醫學院，卻在某個深夜的急診室裡第一次懷疑自己選錯了路……</div>
+          </a>
+
+          <a href="stories/kane-stories.html#the-call" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.3</span>
+            </div>
+            <div class="story-title">那通電話</div>
+            <div class="story-preview">軍方的徵召令在他畢業後第三個月到達。他沒有猶豫太久，這讓他後來很難解釋……</div>
+          </a>
+
+          <a href="stories/kane-stories.html#her" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.4</span>
+            </div>
+            <div class="story-title">她</div>
+            <div class="story-preview">他們在一起七年。他不是不愛她，只是他從來不知道怎麼把「留下來」說得比「任務」更重要……</div>
+          </a>
+
+          <a href="stories/kane-stories.html#cold-case" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.5</span>
+            </div>
+            <div class="story-title">某個他不提的任務</div>
+            <div class="story-preview">那次行動的卷宗至今仍是機密。他的申請書上那欄「轉職原因」只寫了四個字：任務結束……</div>
+          </a>
+
         </div>
-        <div class="story-title">文章標題</div>
-        <div class="story-preview">開頭兩三行預覽⋯⋯</div>
-      </a>
+      </div>
+    </div><!-- /char-stories -->
 
-    </div>
-  </div>
-</div>
+    <!-- ④ MEET HIM -->
+    <div class="char-panel" id="char-meet">
+      <div class="meet-panel">
+
+        <div class="meet-img">
+          <img src="../../pic/characters/kane/4.jpeg" alt="凱恩">
+        </div>
+
+        <div class="meet-card">
+          <div class="meet-label">OWL · KANE CROSS</div>
+          <div class="meet-divider"></div>
+          <div class="meet-quote">
+            說清楚你要什麼。<br>我沒有時間猜。
+          </div>
+          <a href="https://s.floze.ai/r/nlKl84QjWcv9v3KEGfmChmHrK?locale=tw"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="meet-btn">
+            與他相遇 <span class="meet-btn-arrow">→</span>
+          </a>
+        </div>
+
+      </div>
+    </div><!-- /char-meet -->
 
   </div><!-- /main -->
 
   <footer class="footer">
     NIGHT OWL SQUADRON — PERSONNEL FILE — CLASSIFIED
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-inner" id="lightbox-inner" onclick="event.stopPropagation()"></div>
+  </div>
 
   <script>
     function switchCharTab(name, btn) {
@@ -856,6 +1072,43 @@
       document.getElementById('char-' + name).classList.add('active');
       btn.classList.add('active');
     }
+
+    function openLightbox(src, type) {
+      const inner = document.getElementById('lightbox-inner');
+      inner.innerHTML = '';
+      if (type === 'img') {
+        const img = document.createElement('img');
+        img.src = src;
+        inner.appendChild(img);
+      } else if (type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = src;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.style.maxWidth = '90vw';
+        vid.style.maxHeight = '90vh';
+        inner.appendChild(vid);
+      }
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox-inner').innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // 回頂端按鈕
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    });
   </script>
 
 </body>
