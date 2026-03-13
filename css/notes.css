@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== 背景 ===== */
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(180deg,
+    #8AAED4 0%,
+    #A3C4E4 12%,
+    #BDD6EE 24%,
+    #D0E0F0 38%,
+    #DDE5F0 52%,
+    #E6E2EE 65%,
+    #EDE3E8 78%,
+    #F0EAE8 100%
+  );
+  background-attachment: fixed;
+  color: #4A4A4A;
+  overflow-x: hidden;
+}
+
+/* ===== 雲朵 ===== */
+.clouds {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.cloud {
+  position: absolute;
+  background: rgba(255,255,255,0.38);
+  border-radius: 200px;
+  filter: blur(24px);
+}
+.cloud-1 {
+  width: 350px; height: 60px; top: 5%; left: -80px;
+  animation: drift 65s linear infinite;
+}
+.cloud-2 {
+  width: 220px; height: 40px; top: 14%; right: -120px;
+  animation: drift 50s linear infinite reverse; opacity: .5;
+}
+.cloud-3 {
+  width: 280px; height: 50px; top: 26%; left: 20%;
+  animation: drift 58s linear infinite; animation-delay: -25s; opacity: .32;
+}
+.cloud-4 {
+  width: 180px; height: 35px; top: 42%; right: 12%;
+  animation: drift 70s linear infinite reverse; animation-delay: -10s; opacity: .22;
+}
+@keyframes drift {
+  0%   { transform: translateX(-150px); }
+  100% { transform: translateX(calc(100vw + 150px)); }
+}
+
+/* ===== 整頁 wrap ===== */
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== 容器 ===== */
+.container {
+  width: 100%;
+  max-width: 960px;
+  padding: 48px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== 返回按鈕 ===== */
+.back-btn {
+  align-self: flex-start;
+  font-size: 14px;
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.38);
+  transition: all .25s ease;
+}
+.back-btn:hover {
+  background: rgba(255,255,255,0.4);
+  color: #fff;
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+.hero-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 4px 12px rgba(180,120,140,.2));
+}
+.hero-title {
+  font-size: 34px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 20px rgba(100,120,180,.35);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.82);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.hero-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.88);
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+/* ===== 分隔裝飾 ===== */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: rgba(255,255,255,.5);
+  font-size: 14px;
+}
+.deco-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.35);
+}
+
+/* ===== 跑馬燈 ===== */
+.ticker-wrap {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+}
+.ticker-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.95);
+  white-space: nowrap;
+  padding: 5px 12px;
+  background: linear-gradient(135deg, rgba(247, 181, 137, 0.75) );
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.ticker-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(100,130,180,0.2);
+  flex-shrink: 0;
+}
+.ticker-viewport {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 26px;
+}
+.ticker-list {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  list-style: none;
+}
+.ticker-list li {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: rgba(90,105,130,0.85);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+.ticker-list li.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ticker-list li a {
+  color: rgba(90,105,130,0.85);
+  text-decoration: none;
+}
+.ticker-list li a:hover {
+  color: #C4506A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ===== 2×2 卡片格 ===== */
+.card-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ===== 카드 base ===== */
+.note-card {
+  text-decoration: none;
+  color: #4A5568;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.38);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255,255,255,0.75);
+  transition: all .3s ease;
+  overflow: hidden;
+}
+.note-card:hover {
+  background: rgba(255,255,255,0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+}
+
+/* 各卡片邊框色 */
+.note-card--create   { border-color: rgba(110,155,220,0.5); }
+.note-card--ramble   { border-color: rgba(220,130,155,0.5); }
+.note-card--spell    {
+  background: rgba(225,210,245,0.22);
+  border-color: rgba(175,135,210,0.5);
+}
+.note-card--spell:hover { background: rgba(225,210,245,0.38); }
+.note-card--platform { border-color: rgba(100,185,155,0.5); }
+
+/* ===== 카드 inner ===== */
+.note-card-inner {
+  padding: 26px 24px 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== 카드 header：icon + 中英文並排 ===== */
+.note-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.note-card-icon {
+  font-size: 30px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.note-card-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.note-card-en {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  color: rgba(120,135,165,0.65);
+  text-transform: lowercase;
+}
+.note-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4A5A72;
+  line-height: 1.3;
+}
+
+/* ===== 카드 描述 ===== */
+.note-card-subtitle {
+  font-size: 14px;
+  color: rgba(90,105,130,0.75);
+  line-height: 1.8;
+  flex: 1;
+}
+
+/* ===== 카드 footer：最新文章 ===== */
+.note-card-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.note-card-latest {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* latest-label：小色票 */
+.latest-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.95);
+  padding: 3px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.note-card--create   .latest-label { background: rgba(100,140,210,0.55); }
+.note-card--ramble   .latest-label { background: rgba(210,110,140,0.55); }
+.note-card--platform .latest-label { background: rgba(80,170,135,0.55); }
+
+/* latest-title */
+.latest-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(60,80,110,0.75);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 咒語卡片的開放投稿標籤 */
+.spell-open {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.95);
+  background: rgba(155,100,195,0.52);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+/* 箭頭 */
+.arrow {
+  font-size: 18px;
+  color: rgba(100,120,160,0.4);
+  flex-shrink: 0;
+  transition: transform .25s ease;
+}
+.note-card:hover .arrow { transform: translateX(4px); }
+
+/* ===== 關於這裡 ===== */
+.about-strip {
+  width: 100%;
+  margin-top: 4px;
+  padding: 28px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.about-strip-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  flex: 1;
+  min-width: 220px;
+}
+.about-strip-icon {
+  font-size: 30px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.about-strip-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(74,85,104,0.8);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.about-strip-text p {
+  font-size: 14px;
+  color: rgba(74,85,104,0.7);
+  line-height: 2;
+}
+.about-strip-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.about-strip-btn {
+  padding: 12px 26px;
+  background: rgba(255,255,255,0.42);
+  border: 1px solid rgba(255,255,255,0.58);
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5A6578;
+  text-decoration: none;
+  text-align: center;
+  transition: all .25s ease;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.about-strip-btn:hover {
+  background: rgba(255,255,255,0.62);
+  transform: translateY(-1px);
+}
+.about-strip-btn--accent {
+  background: rgba(240,210,230,0.42);
+  border-color: rgba(220,175,205,0.52);
+  color: #8A5570;
+}
+.about-strip-btn--accent:hover {
+  background: rgba(240,210,230,0.62);
+}
+
+/* ===== Footer ===== */
+.footer {
+  margin-top: auto;
+  padding-top: 32px;
+  font-size: 12px;
+  color: rgba(74,85,104,0.5);
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* ===== RWD ===== */
+@media (min-width: 769px) {
+  .card-grid         { align-items: stretch; }
+  .note-card         { height: 100%; }
+  .note-card-inner   { height: 100%; }
+}
+
+@media (max-width: 768px) {
+  .container          { padding: 40px 18px 32px; }
+  .hero-title         { font-size: 26px; letter-spacing: 2px; }
+  .hero-sub           { font-size: 14px; }
+  .hero-desc          { font-size: 14px; }
+  .card-grid          { gap: 12px; }
+  .note-card-inner    { padding: 20px 18px 18px; }
+  .note-card-icon     { font-size: 26px; }
+  .note-card-title    { font-size: 17px; }
+  .note-card-subtitle { font-size: 13px; }
+  .latest-title       { font-size: 12px; }
+  .about-strip        { padding: 22px 20px; }
+  .about-strip-btns   { flex-direction: row; flex-wrap: wrap; }
+  .about-strip-btn    { flex: 1; min-width: 130px; }
+}
+
+@media (max-width: 420px) {
+  .hero-title         { font-size: 22px; }
+  .card-grid          { gap: 10px; }
+  .note-card-inner    { padding: 16px 14px 14px; }
+  .note-card-header   { gap: 10px; }
+  .note-card-icon     { font-size: 22px; }
+  .note-card-title    { font-size: 15px; }
+  .note-card-en       { font-size: 10px; }
+  .note-card-subtitle { font-size: 12px; }
+  .latest-title       { font-size: 11px; }
+  .about-strip-btns   { flex-direction: column; }
+  .about-strip-btn    { width: 100%; }
+  .ticker-wrap        { padding: 10px 14px; }
+  .ticker-label       { font-size: 11px; }
+  .ticker-list li     { font-size: 13px; }
+}
