@@ -241,7 +241,7 @@ body {
 }
 
 .spell-btn--draw {
-  background: rgba(225,210,248,0.45);
+  background: rgba(225,210,248,0.3);
   border: 1.5px solid rgba(190,160,235,0.4);
 }
 .spell-btn--draw:hover {
@@ -251,8 +251,8 @@ body {
 }
 
 .spell-btn--submit {
-  background: rgba(238,225,252,0.35);
-  border: 1.5px solid rgba(210,185,240,0.35);
+  background: rgba(225,210,248,0.3);
+  border: 1.5px solid rgba(190,160,235,0.4);
 }
 .spell-btn--submit:hover {
   background: rgba(238,225,252,0.55);
