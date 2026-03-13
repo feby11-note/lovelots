@@ -281,7 +281,7 @@ body {
 
 /* ===== 卡片副標題 ===== */
 .note-card-subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(80,95,120,0.7);
   line-height: 1.85;
   flex: 1;
@@ -308,7 +308,7 @@ body {
 /* ===== 標籤統一大小 ===== */
 .latest-label,
 .spell-open {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1px;
   color: rgba(255,255,255,0.95);
@@ -323,7 +323,7 @@ body {
 .spell-open { background: rgba(155,100,195,0.55); }
 
 .latest-title {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(70,85,110,0.7);
   line-height: 1.4;
   overflow: hidden;
@@ -479,7 +479,7 @@ body {
 
   /* 副標題正常顯示 */
   .note-card-subtitle {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.75;
     color: rgba(80,95,120,0.65);
     /* 移除任何 clamp 或隱藏 */
@@ -501,10 +501,10 @@ body {
   }
 
   .latest-label,
-  .spell-open   { font-size: 12px; padding: 4px 10px; }
+  .spell-open   { font-size: 13px; padding: 4px 10px; }
 
   .latest-title {
-    font-size: 12px;
+    font-size: 14px;
     /* 讓它可以換行，不要被截斷 */
     white-space: normal;
     overflow: visible;
