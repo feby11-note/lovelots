@@ -429,7 +429,7 @@ body {
   .container { padding: 20px 16px 28px; }
 
   /* 返回按鈕 */
-  .back-btn  { font-size: 13px; margin-bottom: 14px; }
+  .back-btn { font-size: 13px; margin-bottom: 14px; }
 
   /* Hero */
   .hero-icon  { font-size: 36px; margin-bottom: 8px; }
@@ -450,35 +450,79 @@ body {
     gap: 10px;
   }
 
+  /* 卡片內層：直排，跟電腦版一樣結構 */
   .note-card-inner {
     padding: 18px 18px 16px;
+    flex-direction: column;   /* ← 強制直排 */
     gap: 8px;
   }
 
-  .note-card-icon  { font-size: 26px; }
-  .note-card-title { font-size: 18px; }
-
-  .note-card-subtitle {
-    font-size: 14px;
-    line-height: 1.75;
+  /* Header：emoji + 標題橫排，不換行 */
+  .note-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;        /* ← 不換行 */
   }
 
-  .note-card-footer { padding-top: 10px; }
+  .note-card-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .note-card-title {
+    font-size: 18px;
+    white-space: nowrap;      /* ← 標題不換行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 副標題正常顯示 */
+  .note-card-subtitle {
+    font-size: 13px;
+    line-height: 1.75;
+    color: rgba(80,95,120,0.65);
+    /* 移除任何 clamp 或隱藏 */
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  /* footer */
+  .note-card-footer {
+    padding-top: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .note-card-latest {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
 
   .latest-label,
-  .spell-open    { font-size: 13px; padding: 5px 12px; }
-  .latest-title  { font-size: 13px; }
+  .spell-open   { font-size: 12px; padding: 4px 10px; }
+
+  .latest-title {
+    font-size: 12px;
+    /* 讓它可以換行，不要被截斷 */
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .arrow { font-size: 16px; }
 
   /* 關於這裡 */
-  .about-strip      { padding: 20px 18px; gap: 16px; }
-  .about-strip-btns { flex-direction: row; flex-wrap: wrap; width: 100%; }
-  .about-strip-btn  { flex: 1; min-width: 120px; font-size: 13px; padding: 11px 12px; }
+  .about-strip       { padding: 20px 18px; gap: 16px; }
+  .about-strip-btns  { flex-direction: row; flex-wrap: wrap; width: 100%; }
+  .about-strip-btn   { flex: 1; min-width: 120px; font-size: 13px; padding: 11px 12px; }
   .about-strip-text p { font-size: 13px; }
 }
 
 /* 超小螢幕 */
 @media (max-width: 360px) {
-  .hero-title  { font-size: 20px; }
+  .hero-title      { font-size: 20px; }
   .note-card-title { font-size: 16px; }
   .about-strip-btns { flex-direction: column; }
   .about-strip-btn  { width: 100%; }
