@@ -7,15 +7,13 @@ body {
   font-family: 'Noto Sans TC', sans-serif;
   min-height: 100vh;
   background: linear-gradient(180deg,
-    #B8CFDF 0%,
-    #C8D8E8 10%,
-    #D4E0EC 20%,
-    #DFE6EE 32%,
-    #E6E3EE 44%,
-    #EDE3EA 56%,
-    #F0E6E4 68%,
-    #F3EAE6 80%,
-    #F5EDE8 100%
+    #A8C4DC 0%,
+    #BBCFE6 15%,
+    #CCD9EE 30%,
+    #D4E3F0 50%,
+    #E4E8ED 70%,
+    #EDE8E3 85%,
+    #F0EBE5 100%
   );
   background-attachment: fixed;
   color: #4A4A4A;
@@ -405,9 +403,9 @@ body {
   transform: translateY(-1px);
 }
 .about-strip-btn--accent {
-  background: rgba(245,215,225,0.45);
-  border-color: rgba(220,175,195,0.5);
-  color: #8A5570;
+  background: rgba(245, 235, 240, 0.45);
+  border-color: rgba(210, 185, 200, 0.5);
+  color: #7A4A62;
 }
 .about-strip-btn--accent:hover {
   background: rgba(245,215,225,0.65);
@@ -501,7 +499,7 @@ body {
   }
 
   .latest-label,
-  .spell-open   { font-size: 13px; padding: 4px 10px; }
+  .spell-open   { font-size: 1px; padding: 4px 10px; }
 
   .latest-title {
     font-size: 14px;
