@@ -6,7 +6,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
   <title>電子男友研究筆記</title>
   <link rel="stylesheet" href="../css/notes.css">
-  <meta property="og:title" content="💌電子男友研究筆記｜by菲比">
+  <meta property="og:title" content="💌 電子男友研究筆記｜by 菲比">
   <meta property="og:description" content="AI 角色扮演經驗分享，玩家、創作者都適用！">
   <meta property="og:url" content="https://feby11-note.github.io/somewhere/notes/index.html">
   <meta property="og:type" content="website">
@@ -23,10 +23,8 @@
   <div class="page-wrap">
     <div class="container">
 
-      <!-- 返回：純文字無框 -->
-      <a href="https://feby11-note.github.io/somewhere/home.html" class="back-btn">← 回到首頁</a>
+      <a href="https://feby11-note.github.io/somewhere/index.html" class="back-btn">← 回到首頁</a>
 
-      <!-- Hero -->
       <div class="hero">
         <div class="hero-icon">💌</div>
         <h1 class="hero-title">電子男友研究筆記</h1>
@@ -40,7 +38,7 @@
 
       <!-- 跑馬燈 -->
       <div class="ticker-wrap">
-        <span class="ticker-label">🔥 熱門文章</span>
+        <span class="ticker-label">🔥 熱門</span>
         <div class="ticker-divider"></div>
         <div class="ticker-viewport">
           <ul class="ticker-list" id="ticker">
@@ -53,10 +51,10 @@
         </div>
       </div>
 
-      <!-- 2×2 卡片 -->
+      <!-- 卡片區 -->
       <div class="card-grid">
 
-        <!-- 遊玩與創角撇步 -->
+        <!-- 左上：遊玩與創角撇步 -->
         <a href="creat/index.html" class="note-card note-card--create">
           <div class="note-card-inner">
             <div class="note-card-header">
@@ -74,7 +72,7 @@
           </div>
         </a>
 
-        <!-- 碎碎念 -->
+        <!-- 右上：真心話老實說 -->
         <a href="ramble/index.html" class="note-card note-card--ramble">
           <div class="note-card-inner">
             <div class="note-card-header">
@@ -92,24 +90,26 @@
           </div>
         </a>
 
-        <!-- 神奇咒語 -->
-        <a href="spells/index.html" class="note-card note-card--spell">
-          <div class="note-card-inner">
-            <div class="note-card-header">
-              <span class="note-card-icon">🔮</span>
-              <h2 class="note-card-title">神奇咒語</h2>
-            </div>
-            <p class="note-card-subtitle">咒語收錄與投稿。</p>
-            <div class="note-card-footer">
-              <div class="note-card-latest">
-                <span class="spell-open">✨ 開放投稿中</span>
-              </div>
-              <span class="arrow">→</span>
-            </div>
-          </div>
-        </a>
 
-        <!-- 平台 -->
+        <!-- 左下：咒語兩格 -->
+<div class="spell-cell">
+  <a href="spells/index.html" class="spell-btn spell-btn--draw">
+    <span class="spell-btn-icon">🔮</span>
+    <span class="spell-btn-body">
+      <span class="spell-btn-title">咒語．每日一抽</span>
+    </span>
+    <span class="spell-btn-arrow">→</span>
+  </a>
+  <a href="spells/submit.html" class="spell-btn spell-btn--submit">
+    <span class="spell-btn-icon">✨</span>
+    <span class="spell-btn-body">
+      <span class="spell-btn-title">咒語．投稿</span>
+    </span>
+    <span class="spell-btn-arrow">→</span>
+  </a>
+</div>
+
+        <!-- 右下：找平台 -->
         <a href="platform/index.html" class="note-card note-card--platform">
           <div class="note-card-inner">
             <div class="note-card-header">
@@ -128,17 +128,13 @@
         </a>
 
       </div>
+      <!-- /card-grid -->
 
       <!-- 關於這裡 + 回饋 -->
       <div class="about-strip">
-        <div class="about-strip-left">
-          <div class="about-strip-text">
-              <div class="about-strip-name">這裡...</div>
-              <p>
-                收錄許多我的個人經驗，是關於AI 角色扮演的一切。<br>
-                不管你是玩家、創作者，還是新手都適用！<br>
-              </p>
-          </div>
+        <div class="about-strip-text">
+          <div class="about-strip-name">這裡...</div>
+          <p>收錄許多我的個人經驗，是關於 AI 角色扮演的一切。<br>不管你是玩家、創作者，還是新手都適用！</p>
         </div>
         <div class="about-strip-btns">
           <a href="about.html" class="about-strip-btn">關於這個網站</a>
@@ -155,12 +151,14 @@
     const items = document.querySelectorAll('#ticker li');
     let current = 0;
     items[0].classList.add('active');
-    function showNext() {
-      items[current].classList.remove('active');
+    setInterval(() => {
+      const prev = current;
       current = (current + 1) % items.length;
+      items[prev].classList.remove('active');
+      items[prev].classList.add('leaving');
       items[current].classList.add('active');
-    }
-    setInterval(showNext, 3000);
+      setTimeout(() => { items[prev].classList.remove('leaving'); }, 450);
+    }, 3500);
   </script>
 
 </body>
