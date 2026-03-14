@@ -595,12 +595,79 @@ body {
 
 /* ===== RWD ===== */
 @media (max-width: 640px) {
+
+  /* ===== 格局 ===== */
   .spells-grid { grid-template-columns: 1fr; }
   .container { padding: 32px 18px 52px; }
+
+  /* ===== Hero ===== */
   .hero-title { font-size: 26px; letter-spacing: 2px; }
   .hero-desc { font-size: 14px; }
+
+  /* ===== 卡片 ===== */
   .spell-card { padding: 18px; }
   .spell-card-title { font-size: 15px; }
   .random-result .spell-card { padding: 22px; }
   .rules-section { padding: 20px 22px; }
+
+  /* ===== 問題1：Tag 框縮小 ===== */
+  .filter-tag {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+  .tag-filter-wrap {
+    gap: 7px;
+  }
+
+  /* ===== 問題2：頂部導覽列 ===== */
+  .top-nav-inner {
+    height: 46px;
+    padding: 0 12px;
+    justify-content: flex-end;   /* 整體靠右 */
+  }
+  .nav-brand {
+    font-size: 13px;
+    padding-right: 10px;
+    flex-shrink: 0;
+  }
+  .nav-tabs {
+    margin-left: 0;              /* 取消電腦版的 150px */
+    gap: 0;
+    flex-shrink: 0;
+  }
+  .nav-item {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  /* ===== 問題3：搜尋框縮小 ===== */
+  .search-input {
+    padding: 11px 16px 11px 40px;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+  .search-icon {
+    left: 14px;
+    font-size: 15px;
+  }
+  .search-input-wrap {
+    margin-bottom: 14px;
+  }
+
+  /* ===== 問題4：抽咒語按鈕縮小 ===== */
+  .random-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+  }
+  .random-again-btn {
+    padding: 11px;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+  .random-card-wrap {
+    width: 100%;
+  }
 }
