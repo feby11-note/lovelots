@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+  <title>抽咒語｜電子男友研究筆記</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/spells.css">
+</head>
+<body>
+
+<div class="clouds">
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+</div>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="../index.html" class="nav-brand">← 回筆記</a>
+    <div class="nav-tabs">
+      <a href="index.html" class="nav-item">咒語總覽</a>
+      <a href="search.html" class="nav-item">搜尋</a>
+      <a href="random.html" class="nav-item active">每日一抽</a>
+      <a href="submit.html" class="nav-item">投稿</a>
+      <a href="rules.html" class="nav-item">注意事項</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+
+    <div class="hero">
+      <div class="hero-icon">🎲</div>
+      <h1 class="hero-title">每日一抽</h1>
+      <p class="hero-desc">不知道今天要玩什麼劇情？<br>讓咒語替你決定 ✦</p>
+    </div>
+
+    <div class="divider" style="margin: 12px 0 16px;">
+      <span class="deco-line"></span>
+      <span>✦</span>
+      <span class="deco-line"></span>
+    </div>
+
+    <div class="random-card-wrap">
+      <button class="random-btn" id="drawBtn" onclick="drawSpell()">✦ 抽一把 ✦</button>
+      <div id="randomResult"></div>
+    </div>
+
+    <div class="footer">© 2026 ． created by feby</div>
+  </div>
+</div>
+
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbwtvoDGUzBLd6ggFK50Baz9Lt_Aavl6bs6o1SXWi4v4s3rCWVVbzi9L9SCvL6e6v3i_/exec';
+
+let allSpells = [];
+let loaded = false;
+let drawnSpell = null;
+
+async function ensureLoaded() {
+  if (loaded) return;
+  try {
+    const res = await fetch(API);
+    const data = await res.json();
+    allSpells = (data.spells || []).filter(s => !s.r18);
+    loaded = true;
+  } catch(e) { allSpells = []; }
+}
+
+async function drawSpell() {
+  const result = document.getElementById('randomResult');
+  result.innerHTML = '<div class="loading-state">✦ 抽取中 ✦</div>';
+
+  await ensureLoaded();
+
+  if (allSpells.length === 0) {
+    result.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-text">目前還沒有咒語可以抽</div>
+        <div class="empty-state-sub">快去投稿吧！</div>
+      </div>`;
+    return;
+  }
+
+  drawnSpell = allSpells[Math.floor(Math.random() * allSpells.length)];
+  renderResult(drawnSpell);
+}
+
+function renderResult(spell) {
+  const result = document.getElementById('randomResult');
+
+  const tagsHtml = spell.tags.map(t =>
+    `<span class="spell-tag">${t}</span>`
+  ).join('');
+
+  const authorLinks = [
+    `<a href="search.html?author=${encodeURIComponent(spell.author)}" class="spell-author-link">他的咒語</a>`
+  ];
+  if (spell.thread) {
+    authorLinks.push(
+      `<a href="${spell.thread}" target="_blank" rel="noopener" class="spell-author-link threads-link">Threads</a>`
+    );
+  }
+  const authorHtml = `<span class="spell-author">＠${escHtml(spell.author)} ${authorLinks.join('')}</span>`;
+  const noteHtml = spell.note
+    ? `<div class="spell-note">📎 ${escHtml(spell.note)}</div>` : '';
+
+  result.innerHTML = `
+    <div class="random-result">
+      <div class="spell-card">
+        <div class="spell-card-tags">${tagsHtml}</div>
+        <div class="spell-card-title">${escHtml(spell.title)}</div>
+        <div class="spell-content-wrap">
+          <div class="spell-content expanded" id="random-content">${escHtml(spell.content)}</div>
+          <div class="spell-content-actions">
+            <button class="spell-copy-btn" id="random-copy" onclick="copyRandom()">複製</button>
+          </div>
+        </div>
+        ${noteHtml}
+        <div class="spell-card-footer">
+          ${authorHtml}
+          <span class="spell-date">${spell.date}</span>
+        </div>
+      </div>
+    </div>
+    <button class="random-again-btn" onclick="drawSpell()">🎲 再抽一次</button>`;
+}
+
+function copyRandom() {
+  const text = document.getElementById('random-content').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('random-copy');
+    btn.textContent = '已複製 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '複製';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

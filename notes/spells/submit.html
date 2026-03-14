@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+  <title>投稿咒語｜電子男友研究筆記</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/spells.css">
+
+  <style>
+    /* ===== 投稿表單專用樣式 ===== */
+    .form-card {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255,255,255,0.52);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255,255,255,0.85);
+      border-radius: 28px;
+      overflow: hidden;
+    }
+
+    .form-section {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid rgba(200,215,235,0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-section:last-of-type { border-bottom: none; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+    .section-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #D8E8F5, #C8D8EE);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 900;
+      color: #5A7A9A;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 15px; font-weight: 700;
+      color: #3D4A5C; letter-spacing: 1px;
+    }
+    .section-required {
+      font-size: 11px; color: #C4506A;
+      margin-left: auto; letter-spacing: 0.5px;
+    }
+    .section-hint {
+      font-size: 13px;
+      color: rgba(80,95,120,0.55);
+      line-height: 1.75;
+      padding-left: 36px;
+      margin-bottom: 4px;
+    }
+
+    /* ===== 輸入框 ===== */
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid rgba(200,215,235,0.5);
+      border-radius: 14px;
+      font-size: 14px;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: #3D4A5C;
+      outline: none;
+      transition: border-color .25s, background .25s;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(100,120,160,0.38); }
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: rgba(140,170,220,0.75);
+      background: rgba(255,255,255,0.8);
+    }
+    .form-input.error,
+    .form-textarea.error { border-color: rgba(196,80,106,0.6); }
+
+    .form-textarea {
+      resize: none;
+      line-height: 1.8;
+    }
+
+    /* ===== Tag 多選 ===== */
+    .tag-select-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-checkbox {
+      display: none;
+    }
+    .tag-label {
+      padding: 7px 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      border: 1.5px solid rgba(200,215,235,0.5);
+      color: rgba(74,85,104,0.7);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all .2s;
+      user-select: none;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .tag-label:hover {
+      background: rgba(255,255,255,0.7);
+      color: #3D4A5C;
+    }
+    .tag-checkbox:checked + .tag-label {
+      background: rgba(150,170,220,0.4);
+      border-color: rgba(150,170,220,0.65);
+      color: #2D3A5C;
+      font-weight: 700;
+    }
+    /* R18 特殊色 */
+    .tag-checkbox.r18 + .tag-label {
+      border-color: rgba(210,150,170,0.45);
+      color: rgba(160,70,100,0.7);
+    }
+    .tag-checkbox.r18:checked + .tag-label {
+      background: rgba(210,100,130,0.2);
+      border-color: rgba(210,100,130,0.5);
+      color: rgba(160,50,80,0.9);
+    }
+
+    /* ===== 字數 ===== */
+    .char-count {
+      font-size: 11px;
+      color: rgba(100,120,160,0.45);
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    /* ===== 錯誤提示 ===== */
+    .error-msg {
+      font-size: 12px;
+      color: #C4506A;
+      letter-spacing: 0.3px;
+      display: none;
+      padding-left: 2px;
+    }
+    .error-msg.show { display: block; }
+
+    /* ===== 注意提示 ===== */
+    .form-notice {
+      margin: 0 0 20px;
+      padding: 14px 18px;
+      background: rgba(255,240,220,0.5);
+      border: 1px solid rgba(230,180,120,0.4);
+      border-radius: 14px;
+      font-size: 13px;
+      color: rgba(120,90,50,0.8);
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+    }
+    .form-notice a {
+      color: rgba(130,110,170,0.9);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* ===== 送出按鈕 ===== */
+    .form-submit-wrap { padding: 20px 28px 28px; }
+    .submit-btn {
+      width: 100%;
+      padding: 17px;
+      background: linear-gradient(135deg,
+        rgba(210,230,250,0.7),
+        rgba(200,220,245,0.7)
+      );
+      border: 1.5px solid rgba(255,255,255,0.9);
+      border-radius: 16px;
+      font-size: 15px; font-weight: 700;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: #4A6A8A;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: all .3s ease;
+    }
+    .submit-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg,
+        rgba(200,222,248,0.85),
+        rgba(188,212,244,0.85)
+      );
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(130,160,210,0.2);
+    }
+    .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    /* ===== 成功畫面 ===== */
+    .form-success {
+      width: 100%;
+      max-width: 600px;
+      padding: 52px 28px;
+      background: rgba(255,255,255,0.52);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255,255,255,0.85);
+      border-radius: 28px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+    .success-icon { font-size: 52px; }
+    .success-title {
+      font-size: 22px; font-weight: 900;
+      color: #4A5A72; letter-spacing: 2px;
+    }
+    .success-desc {
+      font-size: 14px;
+      color: rgba(80,95,120,0.65);
+      line-height: 2;
+    }
+    .success-back {
+      margin-top: 8px;
+      padding: 12px 28px;
+      background: rgba(255,255,255,0.55);
+      border: 1.5px solid rgba(255,255,255,0.8);
+      border-radius: 14px;
+      font-size: 13px; font-weight: 600;
+      color: #5A6578; text-decoration: none;
+      letter-spacing: 1px;
+      transition: all .25s;
+      display: inline-block;
+    }
+    .success-back:hover {
+      background: rgba(255,255,255,0.75);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 480px) {
+      .form-section { padding: 20px 18px 16px; }
+      .form-submit-wrap { padding: 16px 18px 24px; }
+      .section-hint { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="clouds">
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+</div>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="../index.html" class="nav-brand">← 回筆記</a>
+    <div class="nav-tabs">
+      <a href="index.html" class="nav-item">咒語總覽</a>
+      <a href="search.html" class="nav-item">搜尋</a>
+      <a href="random.html" class="nav-item">每日一抽</a>
+      <a href="submit.html" class="nav-item active">投稿</a>
+      <a href="rules.html" class="nav-item">注意事項</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+
+    <div class="hero">
+      <div class="hero-icon">✍️</div>
+      <h1 class="hero-title">咒語投稿</h1>
+      <p class="hero-desc">
+        歡迎分享你的創意 ♡
+      </p>
+    </div>
+
+    <div class="divider" style="margin: 12px 0 16px;">
+      <span class="deco-line"></span>
+      <span>✦</span>
+      <span class="deco-line"></span>
+    </div>
+
+    <!-- 注意提示 -->
+    <div class="submit-note">
+      ⚠️ 投稿前請先閱讀
+      <a href="rules.html">注意事項</a>，
+      若非原創咒語請記得取得授權唷！<br>
+      投稿後經審核 1～3天 才會出現在咒語總覽 ♡
+    </div>
+
+    <!-- 表單卡片 -->
+    <div class="form-card" id="formCard">
+
+      <!-- Section 1：你的名字 -->
+      <div class="form-section">
+        <div class="section-head">
+          <span class="section-num">1</span>
+          <span class="section-title">你的名字</span>
+        </div>
+        <p class="section-hint">留下暱稱方便標注作者<br>網站裡點擊暱稱可以搜尋到你投稿的咒語唷</p>
+        <input type="text" id="nameInput" class="form-input"
+          placeholder="留空則顯示為「匿名」" maxlength="30">
+      </div>
+
+      <!-- Section 2：Thread帳號 -->
+      <div class="form-section">
+        <div class="section-head">
+          <span class="section-num">2</span>
+          <span class="section-title">Threads 帳號</span>
+        </div>
+        <p class="section-hint">
+          填入的話，咒語卡片上的作者名字會連結到你的 Threads<br>
+          不填也完全沒問題 ♡
+        </p>
+        <input type="text" id="threadInput" class="form-input"
+          placeholder="例如：feby.feby11（不用加 @）" maxlength="50">
+      </div>
+
+      <!-- Section 3：咒語類型 -->
+      <div class="form-section">
+        <div class="section-head">
+          <span class="section-num">3</span>
+          <span class="section-title">咒語類型</span>
+          <span class="section-required">必選</span>
+        </div>
+        <p class="section-hint">可以複選喔！</p>
+
+        <div class="tag-select-wrap" id="tagWrap">
+          <input type="checkbox" class="tag-checkbox" id="t1" value="對話實用">
+          <label class="tag-label" for="t1">對話實用</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t2" value="狀態欄">
+          <label class="tag-label" for="t2">狀態欄</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t3" value="現代">
+          <label class="tag-label" for="t3">現代</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t4" value="日常">
+          <label class="tag-label" for="t4">日常</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t5" value="腦洞大開">
+          <label class="tag-label" for="t5">腦洞大開</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t6" value="搞笑">
+          <label class="tag-label" for="t6">搞笑</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t7" value="穿越">
+          <label class="tag-label" for="t7">穿越</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t8" value="虐">
+          <label class="tag-label" for="t8">虐</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t9" value="甜寵">
+          <label class="tag-label" for="t9">甜寵</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t10" value="古風">
+          <label class="tag-label" for="t10">古風</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t11" value="失憶急救">
+          <label class="tag-label" for="t11">失憶急救</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t12" value="狗血">
+          <label class="tag-label" for="t12">狗血</label>
+
+          <input type="checkbox" class="tag-checkbox" id="t13" value="其他">
+          <label class="tag-label" for="t13">其他</label>
+
+          <input type="checkbox" class="tag-checkbox r18" id="t14" value="R18澀澀">
+          <label class="tag-label" for="t14">⚠️ R18澀澀</label>
+        </div>
+        <span class="error-msg" id="tagError">請至少選擇一個類型 ✦</span>
+      </div>
+
+      <!-- Section 4：咒語標題 -->
+      <div class="form-section">
+        <div class="section-head">
+          <span class="section-num">4</span>
+          <span class="section-title">咒語標題</span>
+          <span class="section-required">必填</span>
+        </div>
+        <p class="section-hint">幫你的咒語取個名字吧！</p>
+        <input type="text" id="titleInput" class="form-input"
+          placeholder="例如：辦公室戀情、變成狗了怎麼辦" maxlength="50">
+        <span class="error-msg" id="titleError">請填入咒語標題 ✦</span>
+      </div>
+
+      <!-- Section 5：咒語內容 -->
+      <div class="form-section">
+        <div class="section-head">
+          <span class="section-num">5</span>
+          <span class="section-title">咒語內容</span>
+          <span class="section-required">必填</span>
+        </div>
+        <p class="section-hint">直接貼上咒語內容，支援換行 ✦</p>
+        <textarea id="contentInput" class="form-textarea"
+          rows="6" placeholder="貼上你的咒語內容，支援markdwon格式～"></textarea>
+        <div class="char-count"><span id="charCount">0</span> 字</div>
+        <span class="error-msg" id="contentError">請填入咒語內容 ✦</span>
+      </div>
+
+      <!-- Section 6：備註 -->
+      <div class="form-section">
+        <div class="section-head">
+          <span class="section-num">6</span>
+          <span class="section-title">備註</span>
+        </div>
+        <p class="section-hint">靈感來源、使用說明、注意事項等都可以寫上唷</p>
+        <textarea id="noteInput" class="form-textarea"
+          rows="3" placeholder="例如：可適時自行補充主控設定"></textarea>
+      </div>
+
+      <!-- 送出 -->
+      <div class="form-submit-wrap">
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          <span id="submitText">✦ 送出投稿 ✦</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 成功畫面 -->
+<!-- 成功畫面 -->
+<div class="form-success" id="successCard" style="display:none;">
+  <div class="success-icon">🔮</div>
+  <h2 class="success-title">咒語收到了 ♡</h2>
+  <p class="success-desc">
+    感謝你的投稿！<br>
+    審核通過後就會出現在咒語總覽，<br>
+    大概 1～3 天內完成 ◍•ᴗ•◍
+  </p>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px;width:100%;">
+    <button class="success-back" style="background:rgba(210,200,245,0.45);border-color:rgba(200,185,240,0.6);color:rgba(90,70,160,0.9);cursor:pointer;font-family:'Noto Sans TC',sans-serif;" onclick="resetForm()">
+      ✦ 再投稿一次 ✦
+    </button>
+    <a href="index.html" class="success-back">← 回到咒語總覽</a>
+  </div>
+</div>
+
+    <div class="footer">© 2026 ． created by feby</div>
+  </div>
+</div>
+
+<script>
+const FORM_ID = '1FAIpQLSeyx9dbHHPo5Jj6_bzrtv8qwPsZ277V-ZWDetxnPn1b6b01Gg';
+const ENTRY = {
+  name:    'entry.1332193631',
+  thread:  'entry.849338042',
+  tags:    'entry.2054517946',
+  title:   'entry.1111576623',
+  content: 'entry.190474024',
+  note:    'entry.377417565',
+};
+
+// 字數計算
+const contentInput = document.getElementById('contentInput');
+const charCount    = document.getElementById('charCount');
+contentInput.addEventListener('input', () => {
+  const len = contentInput.value.length;
+  charCount.textContent = len;
+  if (len > 0) contentInput.classList.remove('error');
+});
+
+// 送出
+async function handleSubmit() {
+  const name    = document.getElementById('nameInput').value.trim();
+  const thread  = document.getElementById('threadInput').value.trim();
+  const title   = document.getElementById('titleInput').value.trim();
+  const content = contentInput.value.trim();
+  const note    = document.getElementById('noteInput').value.trim();
+
+  function resetForm() {
+  // 清空所有欄位
+  document.getElementById('nameInput').value = '';
+  document.getElementById('threadInput').value = '';
+  document.getElementById('titleInput').value = '';
+  document.getElementById('contentInput').value = '';
+  document.getElementById('noteInput').value = '';
+  document.getElementById('charCount').textContent = '0';
+
+  // 取消所有 tag 選取
+  document.querySelectorAll('.tag-checkbox').forEach(cb => cb.checked = false);
+
+  // 清除錯誤狀態
+  document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('.form-input, .form-textarea').forEach(el => el.classList.remove('error'));
+
+  // 重置送出按鈕
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = false;
+  document.getElementById('submitText').textContent = '送出咒語 ✦';
+
+  // 切換畫面
+  document.getElementById('successCard').style.display = 'none';
+  document.getElementById('formCard').style.display = 'block';
+
+  // 捲回頂部
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+  // 取得選中的 tag
+  const selectedTags = [...document.querySelectorAll('.tag-checkbox:checked')]
+    .map(el => el.value);
+
+  let hasError = false;
+
+  // 驗證 tag
+  if (selectedTags.length === 0) {
+    document.getElementById('tagError').classList.add('show');
+    hasError = true;
+  } else {
+    document.getElementById('tagError').classList.remove('show');
+  }
+
+  // 驗證標題
+  if (!title) {
+    document.getElementById('titleInput').classList.add('error');
+    document.getElementById('titleError').classList.add('show');
+    hasError = true;
+  } else {
+    document.getElementById('titleInput').classList.remove('error');
+    document.getElementById('titleError').classList.remove('show');
+  }
+
+  // 驗證內容
+  if (!content) {
+    contentInput.classList.add('error');
+    document.getElementById('contentError').classList.add('show');
+    hasError = true;
+  } else {
+    contentInput.classList.remove('error');
+    document.getElementById('contentError').classList.remove('show');
+  }
+
+  if (hasError) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('submitText').textContent = '傳送中⋯';
+
+  // Google 表單多選：每個 tag 都要獨立送一個 entry
+  const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+
+  const body = new URLSearchParams();
+  body.append(ENTRY.name,    name    || '匿名');
+  body.append(ENTRY.thread,  thread  || '');
+  body.append(ENTRY.title,   title);
+  body.append(ENTRY.content, content);
+  body.append(ENTRY.note,    note    || '');
+
+  // 多選 checkbox：每個值都要 append 同一個 entry key
+  selectedTags.forEach(tag => {
+    body.append(ENTRY.tags, tag);
+  });
+
+  try {
+    await fetch(formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    });
+  } catch (_) {}
+
+  document.getElementById('formCard').style.display    = 'none';
+  document.getElementById('successCard').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>

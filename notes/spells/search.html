@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+  <title>搜尋咒語｜電子男友研究筆記</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/spells.css">
+</head>
+<body>
+
+<div class="clouds">
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+</div>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="../index.html" class="nav-brand">← 回筆記</a>
+    <div class="nav-tabs">
+      <a href="index.html" class="nav-item">咒語總覽</a>
+      <a href="search.html" class="nav-item active">搜尋</a>
+      <a href="random.html" class="nav-item">每日一抽</a>
+      <a href="submit.html" class="nav-item">投稿</a>
+      <a href="rules.html" class="nav-item">注意事項</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container">
+
+    <div class="hero">
+      <div class="hero-icon">🔍</div>
+      <h1 class="hero-title">搜尋咒語</h1>
+      <p class="hero-desc">輸入關鍵字，或點選 Tag 篩選</p>
+    </div>
+
+    <div class="divider">
+      <span class="deco-line"></span>
+      <span>✦</span>
+      <span class="deco-line"></span>
+    </div>
+
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput"
+        placeholder="搜尋咒語標題或內容..." oninput="doSearch()">
+    </div>
+
+    <div class="tag-filter-wrap">
+      <button class="filter-tag active" data-tag="全部" onclick="filterByTag(this)">全部</button>
+      <button class="filter-tag" data-tag="對話實用" onclick="filterByTag(this)">對話實用</button>
+      <button class="filter-tag" data-tag="狀態欄" onclick="filterByTag(this)">狀態欄</button>
+      <button class="filter-tag" data-tag="現代" onclick="filterByTag(this)">現代</button>
+      <button class="filter-tag" data-tag="日常" onclick="filterByTag(this)">日常</button>
+      <button class="filter-tag" data-tag="腦洞大開" onclick="filterByTag(this)">腦洞大開</button>
+      <button class="filter-tag" data-tag="搞笑" onclick="filterByTag(this)">搞笑</button>
+      <button class="filter-tag" data-tag="穿越" onclick="filterByTag(this)">穿越</button>
+      <button class="filter-tag" data-tag="虐" onclick="filterByTag(this)">虐</button>
+      <button class="filter-tag" data-tag="甜寵" onclick="filterByTag(this)">甜寵</button>
+      <button class="filter-tag" data-tag="古風" onclick="filterByTag(this)">古風</button>
+      <button class="filter-tag" data-tag="失憶急救" onclick="filterByTag(this)">失憶急救</button>
+      <button class="filter-tag" data-tag="狗血" onclick="filterByTag(this)">狗血</button>
+      <button class="filter-tag" data-tag="其他" onclick="filterByTag(this)">其他</button>
+      <button class="filter-tag r18-tag" data-tag="R18澀澀" onclick="filterByTag(this)">R18澀澀</button>
+    </div>
+
+    <div class="result-count" id="resultCount"></div>
+    <div class="spells-grid" id="spellsGrid">
+      <div class="loading-state">✦ 載入中 ✦</div>
+    </div>
+
+    <div class="footer">© 2026 ． created by feby</div>
+  </div>
+</div>
+
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbwtvoDGUzBLd6ggFK50Baz9Lt_Aavl6bs6o1SXWi4v4s3rCWVVbzi9L9SCvL6e6v3i_/exec';
+
+let allSpells = [];
+let currentTag = '全部';
+let currentKeyword = '';
+
+async function loadSpells() {
+  try {
+    const res = await fetch(API);
+    const data = await res.json();
+    allSpells = data.spells || [];
+
+    // 檢查網址有沒有帶 author 參數（從「他的咒語」連過來）
+    const params = new URLSearchParams(window.location.search);
+    const author = params.get('author');
+    if (author) {
+      document.getElementById('searchInput').value = author;
+      currentKeyword = author.toLowerCase();
+    }
+
+    applyFilter();
+  } catch (e) {
+    document.getElementById('spellsGrid').innerHTML =
+      '<div class="empty-state"><div class="empty-state-text">資料載入失敗</div><div class="empty-state-sub">請稍後再試</div></div>';
+  }
+}
+
+function filterByTag(btn) {
+  document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentTag = btn.dataset.tag;
+  applyFilter();
+}
+
+function doSearch() {
+  currentKeyword = document.getElementById('searchInput').value.trim().toLowerCase();
+  applyFilter();
+}
+
+function applyFilter() {
+  let result = allSpells;
+  if (currentTag !== '全部') {
+    result = result.filter(s => s.tags.includes(currentTag));
+  }
+  if (currentKeyword) {
+    result = result.filter(s =>
+      s.title.toLowerCase().includes(currentKeyword) ||
+      s.content.toLowerCase().includes(currentKeyword) ||
+      s.author.toLowerCase().includes(currentKeyword)
+    );
+  }
+  renderSpells(result);
+}
+
+function renderSpells(spells) {
+  const grid = document.getElementById('spellsGrid');
+  const count = document.getElementById('resultCount');
+
+  if (spells.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div class="empty-state-text">找不到符合的咒語</div><div class="empty-state-sub">換個關鍵字試試看吧！</div></div>';
+    count.textContent = '';
+    return;
+  }
+  count.textContent = `找到 ${spells.length} 個咒語`;
+  grid.innerHTML = spells.map((s, i) => buildCard(s, i)).join('');
+}
+
+function buildCard(spell, idx) {
+  const tagsHtml = spell.tags.map(t =>
+    `<span class="spell-tag${t.includes('R18') ? ' r18-tag' : ''}">${t}</span>`
+  ).join('');
+
+  const authorLinks = [
+    `<a href="search.html?author=${encodeURIComponent(spell.author)}" class="spell-author-link">他的咒語</a>`
+  ];
+  if (spell.thread) {
+    authorLinks.push(
+      `<a href="${spell.thread}" target="_blank" rel="noopener" class="spell-author-link threads-link">Threads</a>`
+    );
+  }
+
+  const authorHtml = `<span class="spell-author">＠${escHtml(spell.author)} ${authorLinks.join('')}</span>`;
+  const noteHtml = spell.note ? `<div class="spell-note">📎 ${escHtml(spell.note)}</div>` : '';
+
+  const cardInner = `
+    <div class="spell-card-tags">${tagsHtml}</div>
+    <div class="spell-card-title">${escHtml(spell.title)}</div>
+    <div class="spell-content-wrap">
+      <div class="spell-content" id="content-${idx}">${escHtml(spell.content)}</div>
+      <div class="spell-content-actions">
+        <button class="spell-expand-btn" id="btn-${idx}" onclick="toggleExpand(${idx})">展開 ▾</button>
+        <button class="spell-copy-btn" id="copy-${idx}" onclick="copySpell(${idx})">複製</button>
+      </div>
+    </div>
+    ${noteHtml}
+    <div class="spell-card-footer">
+      ${authorHtml}
+      <span class="spell-date">${spell.date}</span>
+    </div>`;
+
+  if (spell.r18) {
+    return `
+      <div class="spell-card r18-card" id="card-${idx}">
+        <div class="r18-blur-wrap">
+          <div class="r18-overlay" id="overlay-${idx}" onclick="unlockR18(${idx})">
+            <div class="r18-overlay-text">⚠️ R18 內容</div>
+            <div class="r18-overlay-hint">點擊確認年齡已滿 18 歲</div>
+          </div>
+          ${cardInner}
+        </div>
+      </div>`;
+  }
+  return `<div class="spell-card" id="card-${idx}">${cardInner}</div>`;
+}
+
+function toggleExpand(idx) {
+  const c = document.getElementById(`content-${idx}`);
+  const b = document.getElementById(`btn-${idx}`);
+  const expanded = c.classList.toggle('expanded');
+  b.textContent = expanded ? '收合 ▴' : '展開 ▾';
+}
+
+function copySpell(idx) {
+  const text = document.getElementById(`content-${idx}`).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(`copy-${idx}`);
+    btn.textContent = '已複製 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '複製';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function unlockR18(idx) {
+  const overlay = document.getElementById(`overlay-${idx}`);
+  if (overlay) overlay.style.display = 'none';
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+loadSpells();
+</script>
+
+</body>
+</html>
