@@ -1,0 +1,492 @@
+/* ══════════════════════════════════════
+   platform.css
+   ══════════════════════════════════════ */
+
+/* ── 置頂列 ── */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(168, 196, 220, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+
+.topbar-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* 回到筆記 */
+.topbar-back {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(50,70,100,0.65);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 6px 12px 6px 0;
+  transition: color .2s;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+.topbar-back:hover { color: #2A4A80; }
+
+/* 分隔線 */
+.topbar-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(80,100,140,0.2);
+  margin: 0 14px;
+  flex-shrink: 0;
+}
+
+/* 導覽連結群組 */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.topbar-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(60,80,110,0.55);
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: all .2s ease;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.topbar-link:hover {
+  background: rgba(255,255,255,0.35);
+  color: rgba(40,60,100,0.85);
+}
+.topbar-link.active {
+  background: rgba(255,255,255,0.72);
+  color: #2A4A80;
+  font-weight: 600;
+  box-shadow: 0 1px 6px rgba(80,100,150,0.1);
+}
+
+/* 主面板 */
+.page-wrap { padding-top: 60px; }
+.main-panel { display: none; width: 100%; }
+.main-panel.active { display: block; }
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-top: 4px;
+}
+.hero-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #4A5A72;
+  letter-spacing: 2px;
+}
+
+/* ══════════════════════════════
+   書籤 Tab（綜合排行 / 各平台詳情）
+   截圖那種樣式：選中白底+圓角+陰影
+   ══════════════════════════════ */
+.bookmark-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 0;
+  padding: 0 2px;
+}
+
+.bookmark-tab {
+  padding: 11px 24px;
+  border: none;
+  border-radius: 14px 14px 0 0;
+  background: rgba(200,215,235,0.45);
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(80,100,140,0.55);
+  cursor: pointer;
+  transition: all .22s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  position: relative;
+  bottom: 0;
+}
+.bookmark-tab:hover {
+  background: rgba(220,230,245,0.65);
+  color: rgba(60,80,120,0.75);
+}
+.bookmark-tab.active {
+  background: rgba(255,255,255,0.88);
+  color: #2A4080;
+  box-shadow: 0 -2px 10px rgba(100,130,180,0.08),
+              2px 0 0 rgba(255,255,255,0.88),
+              -2px 0 0 rgba(255,255,255,0.88);
+  padding-top: 13px;
+}
+
+/* 書籤下方的內容區：白底卡片接合書籤 */
+.sub-panel {
+  display: none;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 0 16px 16px 16px;
+  border: 1px solid rgba(255,255,255,0.85);
+  padding: 20px 18px;
+  box-shadow: 0 4px 20px rgba(100,130,180,0.08);
+  margin-bottom: 20px;
+}
+.sub-panel.active { display: block; }
+
+/* ══════════════════════════════
+   Pill Tab（💰代幣單價 / 💬每則回覆）
+   ══════════════════════════════ */
+.pill-tabs {
+  display: inline-flex;
+  gap: 0;
+  margin-bottom: 18px;
+  background: rgba(210,225,245,0.45);
+  border-radius: 24px;
+  padding: 4px;
+  border: 1px solid rgba(180,200,230,0.4);
+}
+
+.pill-tab {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(80,100,140,0.55);
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+.pill-tab:hover {
+  color: rgba(60,80,120,0.75);
+}
+.pill-tab.active {
+  background: #fff;
+  color: #2A4A80;
+  box-shadow: 0 2px 8px rgba(80,110,180,0.12);
+}
+
+.rank-panel { display: none; }
+.rank-panel.active { display: block; }
+
+/* ── 最便宜/最貴切換 ── */
+.toggle-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.toggle-btn {
+  padding: 6px 18px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(180,195,215,0.4);
+  background: rgba(240,245,255,0.5);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(80,95,130,0.6);
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.toggle-btn:hover {
+  background: rgba(220,235,255,0.6);
+  color: #4A6090;
+}
+.toggle-btn.active {
+  background: rgba(80,160,120,0.15);
+  border-color: rgba(60,160,110,0.4);
+  color: #1A6A40;
+  font-weight: 700;
+}
+.toggle-panel { display: none; }
+.toggle-panel.active { display: block; }
+
+/* ══════════════════════════════
+   排行榜表格（截圖風：大行距、淺底、圓角卡片）
+   ══════════════════════════════ */
+.rank-table-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(100,130,180,0.10);
+  margin-bottom: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 300px;
+  background: #fff;
+}
+
+.rank-table thead tr {
+  background: #C8D8EC;
+}
+.rank-table th {
+  padding: 14px 18px;
+  text-align: center;
+  font-weight: 700;
+  color: #3A4E6A;
+  font-size: 13px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.rank-table td {
+  padding: 16px 18px;
+  text-align: center;
+  color: #4A5568;
+  border-bottom: 1px solid #EEF2F8;
+  background: #fff;
+  font-size: 14px;
+}
+.rank-table tbody tr:last-child td { border-bottom: none; }
+.rank-table tbody tr:hover td { background: #e0e6f3; }
+
+/* 排名色（沿用截圖的暖色調） */
+.rank-1 td { background: #ffe9c6 !important; }
+.rank-2 td { background: #fef8cb !important; }
+.rank-3 td { background: #F3F5F8 !important; }
+.rank-table tbody .rank-1:hover td { background: #e0e6f3 !important; }
+.rank-table tbody .rank-2:hover td { background: #e0e6f3 !important; }
+.rank-table tbody .rank-3:hover td { background: #e0e6f3 !important; }
+
+.best  { font-weight: 700; color: #1E7A45; font-size: 15px; }
+.muted { color: #9AAABB; font-size: 13px; }
+
+/* ══════════════════════════════
+   各平台詳情的平台 Tab
+   ══════════════════════════════ */
+.platform-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ptab {
+  padding: 7px 15px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(180,200,230,0.4);
+  background: rgba(230,238,250,0.45);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(70,90,130,0.6);
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+  white-space: nowrap;
+}
+.ptab:hover {
+  background: rgba(210,225,248,0.65);
+  color: #3A5A90;
+  border-color: rgba(140,170,220,0.5);
+}
+.ptab.active {
+  background: rgba(100,140,210,0.18);
+  border-color: rgba(100,140,210,0.55);
+  color: #2A4A8A;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(80,120,200,0.1);
+}
+
+/* Platform Panel */
+.platform-panel { display: none; }
+.platform-panel.active { display: block; }
+
+.platform-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.platform-currency {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4A5A72;
+}
+.platform-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: rgba(255,220,120,0.3);
+  color: rgba(140,90,10,0.85);
+  border: 1px solid rgba(230,180,60,0.35);
+}
+
+/* Panel Grid */
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.panel-card {
+  background: rgba(248,251,255,0.9);
+  border: 1px solid rgba(200,215,240,0.6);
+  border-radius: 16px;
+  padding: 16px 14px;
+}
+.panel-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(70,90,130,0.8);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* ══════════════════════════════
+   各平台詳情表格（白底卡片，保持現有風格）
+   ══════════════════════════════ */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(100,130,180,0.08);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 160px;
+}
+.data-table thead tr { background: #C8D8EC; }
+.data-table th {
+  padding: 11px 14px;
+  text-align: center;
+  font-weight: 700;
+  color: #3A4E6A;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 10px 14px;
+  text-align: center;
+  color: #4A5568;
+  border-bottom: 1px solid #EEF1F6;
+  background: #fff;
+  font-size: 13px;
+}
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover td { background: #F5F8FF; }
+
+.best-row td { background: #EAF7EE !important; }
+.data-table tbody .best-row:hover td { background: #D8F0E0 !important; }
+
+.cost-cheap { color: #1E7A45; font-weight: 700; }
+
+/* ── 免責聲明 ── */
+.notice-box {
+  width: 100%;
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: rgba(255,235,200,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(235,185,110,0.45);
+  border-left: 3px solid rgba(220,140,50,0.65);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.notice-box p {
+  font-size: 13px;
+  color: rgba(140,85,20,0.85);
+  line-height: 2.1;
+}
+
+/* ── 輔助文字 ── */
+.panel-note {
+  font-size: 14px;
+  color: rgba(80,95,120,0.6);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.footnote {
+  font-size: 12px;
+  color: rgba(80,95,120,0.48);
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: rgba(100,120,160,0.35);
+  font-size: 13px;
+}
+.deco-line { width: 48px; height: 1px; background: rgba(100,120,160,0.2); }
+
+/* ── Footer ── */
+.footer {
+  padding-top: 28px;
+  font-size: 11px;
+  color: rgba(74,85,104,0.4);
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* ══ RWD ══ */
+@media (max-width: 600px) {
+  .topbar-inner  { padding: 0 14px; height: 48px; }
+  .topbar-back   { font-size: 12px; }
+  .topbar-divider { margin: 0 10px; }
+  .topbar-link   { font-size: 12px; padding: 5px 12px; }
+  .page-wrap     { padding-top: 56px; }
+
+  .hero-title    { font-size: 22px; }
+  .hero          { margin-bottom: 18px; }
+
+  .bookmark-tab  { font-size: 13px; padding: 9px 16px; }
+  .bookmark-tab.active { padding-top: 11px; }
+  .sub-panel     { padding: 16px 14px; }
+
+  .pill-tabs     { width: 100%; }
+  .pill-tab      { flex: 1; text-align: center; font-size: 12px; padding: 7px 10px; }
+
+  .toggle-btn    { font-size: 11px; padding: 5px 13px; }
+
+  .ptab          { font-size: 12px; padding: 6px 11px; }
+
+  .panel-grid    { grid-template-columns: 1fr; }
+
+  .rank-table th,
+  .rank-table td { padding: 12px 10px; font-size: 13px; }
+  .best          { font-size: 14px; }
+
+  .data-table th,
+  .data-table td { padding: 9px 10px; }
+}
+
+@media (max-width: 380px) {
+  .topbar-back   { font-size: 11px; }
+  .topbar-link   { font-size: 11px; padding: 4px 10px; }
+  .bookmark-tab  { font-size: 12px; padding: 8px 12px; }
+  .rank-table    { font-size: 12px; }
+}
